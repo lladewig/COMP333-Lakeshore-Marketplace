@@ -14,3 +14,5 @@ sudo -u $USER psql < setup.sql
 You should now be able to see the database on the local machine. Eventually, the database will be hosted on AWS.
 
 Maven dependencies should take care of the rest for you. 
+
+In `DB`, make sure to change the `username` to reflect what your username is for PostgreSQL. This will usually be the same as your $USER variable.
