@@ -13,6 +13,7 @@ CREATE TABLE product(
     product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(255),
     partner_owner INT REFERENCES partner(partner_id),
+    product_cost FLOAT,
     product_description VARCHAR(255)
 );
 
@@ -70,12 +71,14 @@ CREATE TABLE order_status(
 INSERT INTO order_status(order_status_name, order_status_details) VALUES ('processing', 'The order is being processed.');
 INSERT INTO order_status(order_status_name, order_status_details) VALUES ('shipped', 'The order is being shipped to you.');
 INSERT INTO order_status(order_status_name, order_status_details) VALUES ('delivered', 'The order has been delivered.');
+INSERT INTO order_status(order_status_name, order_status_details) VALUES ('canceled', 'The order has been canceled.');
 
 CREATE TABLE proudct_order(
     order_id SERIAL PRIMARY KEY,
     customer_id INT REFERENCES customer(customer_id),
     product_id INT REFERENCES product(product_id),
-    payment INT REFERENCES payment(payment_id),
+    payment_id INT REFERENCES payment(payment_id),
+    order_cost FLOAT,
     shipment_address INT REFERENCES address(address_id),
     order_status_id INT REFERENCES order_status(order_status_id)
 );
