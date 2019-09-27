@@ -73,7 +73,7 @@ INSERT INTO order_status(order_status_name, order_status_details) VALUES ('shipp
 INSERT INTO order_status(order_status_name, order_status_details) VALUES ('delivered', 'The order has been delivered.');
 INSERT INTO order_status(order_status_name, order_status_details) VALUES ('canceled', 'The order has been canceled.');
 
-CREATE TABLE proudct_order(
+CREATE TABLE product_order(
     order_id SERIAL PRIMARY KEY,
     customer_id INT REFERENCES customer(customer_id),
     product_id INT REFERENCES product(product_id),
