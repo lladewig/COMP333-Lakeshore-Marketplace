@@ -5,9 +5,9 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql://localhost:5432/lakeshore_marketplace</property>
-        <property name="connection.username">lladewig</property>
-        <property name="connection.password"></property>
+        <property name="connection.url">jdbc:postgresql://webservices-lakeshore-mp.clvkxzutxsxi.us-east-2.rds.amazonaws.com:5432/lakeshore_marketplace</property>
+        <property name="connection.username">webservices</property>
+        <property name="connection.password">lmpws123</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">1</property>
         <!-- Select our SQL dialect -->
