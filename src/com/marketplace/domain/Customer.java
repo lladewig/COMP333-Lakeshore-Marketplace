@@ -7,7 +7,6 @@ public class Customer {
 	private String lastName;
 	private int phoneNumber;
 	
-	
 	public Customer(String firstName, String lastName, int phoneNumber) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -16,7 +15,6 @@ public class Customer {
 	
 	public Customer() {
 	}
-	
 	
 	public int getcustomerID() {
 		return customerID;
