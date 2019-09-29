@@ -54,13 +54,13 @@ public class ReviewDAL {
 		return reviews;
 	}
 	
-	public static Review addReview(int custID, int productID, String reviewBody) {	
+	public static Review addReview(int custID, int reviewScore, int productID, String reviewBody) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 	    Customer customer = session.get(Customer.class, custID);
 	    Product product = session.get(Product.class, productID);
-	    Review review = new Review(customer, product, reviewBody); 
+	    Review review = new Review(customer, reviewScore, product, reviewBody); 
 	    
 	    Transaction tx = session.beginTransaction();
 	    session.save(review);

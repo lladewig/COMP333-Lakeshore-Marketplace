@@ -55,6 +55,23 @@ public class OrderDAL {
 		return orders;
 	}
 	
+	public static Order updateOrderStatus(String reviewStatus, int id) {
+		
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Order order = session.get(Order.class, id);
+	    if (order != null) {
+	    	order.setStatus(reviewStatus);
+	    	Transaction tx = session.beginTransaction();
+	    	session.save(order);
+		    tx.commit();
+	    } 
+	    session.close();
+	    
+	    return order;
+	}
+	
 	public static Order addOrder(int custID, int paymentID, int productID, String status, String shipmentAddress) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();

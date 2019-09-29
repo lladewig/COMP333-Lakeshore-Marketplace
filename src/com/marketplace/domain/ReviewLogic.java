@@ -18,8 +18,8 @@ public class ReviewLogic {
 		return ReviewDAL.getAllReviewForProduct(productID);
 	}
 	
-	public Review addReview(int custID, int productID, String reviewBody) {
-		return ReviewDAL.addReview(custID, productID, reviewBody);
+	public Review addReview(int custID, int reviewScore, int productID, String reviewBody) {
+		return ReviewDAL.addReview(custID, reviewScore, productID, reviewBody);
 	}
 	
 	public static Review deleteReview(int reviewID) {

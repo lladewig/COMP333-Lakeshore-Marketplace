@@ -22,8 +22,8 @@ public class PaymentLogic {
 		return PaymentDAL.getAllPaymentsForCustomer(custID);
 	}
 	
-	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate) {
-		return PaymentDAL.addPayment(custID, cardNumber, securityCode, expirationDate);
+	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, String billingAddress) {
+		return PaymentDAL.addPayment(custID, cardNumber, securityCode, expirationDate, billingAddress);
 	}
 	
 	public Payment deletePayment(int id) {

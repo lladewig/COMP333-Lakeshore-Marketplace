@@ -48,12 +48,12 @@ public class PaymentDAL {
 	}
 	
 	
-	public static Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate) {	
+	public static Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, String billingAddress) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 	    Customer customer = session.get(Customer.class, custID);   
-	    Payment Pay = new Payment(customer, cardNumber, securityCode, expirationDate);
+	    Payment Pay = new Payment(customer, cardNumber, securityCode, expirationDate, billingAddress);
 	    
 	    Transaction tx = session.beginTransaction();
 	    session.save(Pay);

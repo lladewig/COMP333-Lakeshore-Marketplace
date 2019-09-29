@@ -2,12 +2,14 @@ package com.marketplace.domain;
 
 public class Review {
 	private int reviewID;
+	private int reviewScore;
 	private Customer customer;
 	private Product product;
 	private String reviewBody;
 	
-	public Review(Customer customer, Product product, String reviewBody) {
+	public Review(Customer customer, int reviewScore, Product product, String reviewBody) {
 		this.customer = customer;
+		this.reviewScore = reviewScore;
 		this.product = product;
 		this.reviewBody = reviewBody;
 	}

@@ -20,6 +20,7 @@
       <many-to-one name="product" class="com.marketplace.domain.Product"
             column="product_id" unique="true" not-null="true"
             cascade="none" />      
-      <property name = "reviewBody" column = "street_address" type = "string"/>
+      <property name = "reviewBody" column = "review_body" type = "string"/>
+      <property name = "reviewScore" column = "review_score" type = "int"/>
    </class>
 </hibernate-mapping>

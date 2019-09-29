@@ -7,12 +7,14 @@ public class Payment {
 	private int cardNumber;
 	private int securityCode;
 	private String expirationDate;
+	private String billingAddress;
 	
-	public Payment(Customer customer, int cardNumber, int securityCode, String expirationDate) {
+	public Payment(Customer customer, int cardNumber, int securityCode, String expirationDate, String billingAddress) {
 		this.customer = customer;
 		this.cardNumber = cardNumber;
 		this.securityCode = securityCode;
 		this.expirationDate = expirationDate;
+		this.billingAddress = billingAddress;
 		
 	}
 	
