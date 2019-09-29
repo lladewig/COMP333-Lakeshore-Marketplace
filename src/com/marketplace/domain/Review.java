@@ -42,6 +42,14 @@ public class Review {
 		this.product = product;
 	}
 	
+	public int getReviewScore() {
+		return reviewScore;
+	}
+	
+	public void setReviewScore(int newreviewScore) {
+		reviewScore = newreviewScore;
+	}
+	
 	public String getReviewBody() {
 		return reviewBody;
 	}
