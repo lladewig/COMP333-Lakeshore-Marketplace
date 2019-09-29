@@ -17,6 +17,9 @@
       <many-to-one name="customer" class="com.marketplace.domain.Customer"
             column="customer_id" unique="true" not-null="true"
             cascade="none" />
+      <many-to-one name="billingAddress" class="com.marketplace.domain.Customer"
+            column="billing_address" unique="true" not-null="true"
+            cascade="none" />      
       <property name = "cardNumber" column = "card_number" type = "int"/>
       <property name = "securityCode" column = "security_code" type = "int"/>
       <property name = "expirationDate" column = "expiration_date" type = "string"/>

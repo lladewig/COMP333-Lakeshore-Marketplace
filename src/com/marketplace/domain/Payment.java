@@ -7,9 +7,9 @@ public class Payment {
 	private int cardNumber;
 	private int securityCode;
 	private String expirationDate;
-	private String billingAddress;
+	private Address billingAddress;
 	
-	public Payment(Customer customer, int cardNumber, int securityCode, String expirationDate, String billingAddress) {
+	public Payment(Customer customer, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {
 		this.customer = customer;
 		this.cardNumber = cardNumber;
 		this.securityCode = securityCode;
@@ -60,5 +60,13 @@ public class Payment {
 	
 	public void setexpirationDate(String newexpirationDate) {
 		expirationDate = newexpirationDate;
+	}	
+	
+	public Address getBillingAddress() {
+		return billingAddress;
+	}
+	
+	public void setBillingAddress(Address newBillingAddress) {
+		billingAddress = newBillingAddress;
 	}	
 }

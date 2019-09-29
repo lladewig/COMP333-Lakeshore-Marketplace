@@ -7,9 +7,9 @@ public class Order {
 	private Product product;
 	private Payment payment;
 	private String status;
-	private String shipmentAddress;
+	private Address shipmentAddress;
 
-	public Order(Customer customer, Product product, Payment payment, String status, String shipmentAddress) {
+	public Order(Customer customer, Product product, Payment payment, String status, Address shipmentAddress) {
 		this.customer = customer;
 		this.product = product;
 		this.payment = payment;
@@ -60,11 +60,11 @@ public class Order {
 		status = newStatus;
 	}
 	
-	public String getshipmentAddress() {
+	public Address getshipmentAddress() {
 		return shipmentAddress;
 	}
 	
-	public void setshipmentAddress(String newShipmentAddress) {
+	public void setshipmentAddress(Address newShipmentAddress) {
 		shipmentAddress = newShipmentAddress;
 	}
 }
