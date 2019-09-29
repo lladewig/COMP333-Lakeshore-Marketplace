@@ -23,3 +23,7 @@ Now, we have a database on AWS. If you would like to connect to the database fro
 ```bash
 psql --host=webservices-lakeshore-mp.clvkxzutxsxi.us-east-2.rds.amazonaws.com --port=5432 --username=webservices --password --dbname=lakeshore_marketplace
 ```
+
+## Database Model
+This is the model of our database used in this project.
+![LMP Lakeshore Marketplace DB](https://github.com/lladewig/COMP333-Project-2/blob/master/LMP%20Database%20Model.png)
