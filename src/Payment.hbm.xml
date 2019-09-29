@@ -20,5 +20,6 @@
       <property name = "cardNumber" column = "card_number" type = "int"/>
       <property name = "securityCode" column = "security_code" type = "int"/>
       <property name = "expirationDate" column = "expiration_date" type = "string"/>
+      <property name = "billingAddress" column = "billing_address" type = "address"/>
    </class>
 </hibernate-mapping>

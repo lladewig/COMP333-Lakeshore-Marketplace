@@ -22,7 +22,7 @@ public class PaymentLogic {
 		return PaymentDAL.getAllPaymentsForCustomer(custID);
 	}
 	
-	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, String billingAddress) {
+	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {
 		return PaymentDAL.addPayment(custID, cardNumber, securityCode, expirationDate, billingAddress);
 	}
 	
@@ -45,4 +45,9 @@ public class PaymentLogic {
 		Payment payment = PaymentDAL.updatePaymentExpirationDate(expirationDate, id);
 		return payment;
 	}	
+	
+	public Payment updatePaymentBillingAddress(Address billingAddress, int id) {
+		Payment payment = PaymentDAL.updatePaymentBillingAddress(billingAddress, id);
+		return payment;
+	}
 }

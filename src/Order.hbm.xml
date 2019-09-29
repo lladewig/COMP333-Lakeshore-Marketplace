@@ -24,6 +24,6 @@
             column="product_id" unique="true" not-null="true"
             cascade="none" />   
       <property name = "status" column = "status" type = "string"/>
-      <property name = "shipmentAddress" column = "shipment_address" type = "string"/>
+      <property name = "shipmentAddress" column = "shipment_address" type = "address"/>
    </class>
 </hibernate-mapping>

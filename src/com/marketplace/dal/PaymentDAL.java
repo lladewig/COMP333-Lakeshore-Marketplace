@@ -7,6 +7,7 @@ import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
 import com.marketplace.domain.Payment;
+import com.marketplace.domain.Address;
 import com.marketplace.domain.Customer;
 
 public class PaymentDAL {
@@ -48,7 +49,7 @@ public class PaymentDAL {
 	}
 	
 	
-	public static Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, String billingAddress) {	
+	public static Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -123,6 +124,23 @@ public class PaymentDAL {
 	    Payment payment = session.get(Payment.class, id);
 	    if (payment != null) {
 	    	payment.setexpirationDate(expirationDate);
+	    	Transaction tx = session.beginTransaction();
+	    	session.save(payment);
+		    tx.commit();
+	    } 
+	    session.close();
+	    
+	    return payment;
+	}
+	
+	public static Payment updatePaymentBillingAddress(Address billingAddress, int id) {
+		
+		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+	    Session session = sf.openSession();
+	    
+	    Payment payment = session.get(Payment.class, id);
+	    if (payment != null) {
+	    	payment.setBillingAddress(billingAddress);
 	    	Transaction tx = session.beginTransaction();
 	    	session.save(payment);
 		    tx.commit();
