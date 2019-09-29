@@ -7,7 +7,7 @@
    <class name = "com.marketplace.domain.Address" table = "address">
       
       <meta attribute = "class-description">
-         This class contains customer information. 
+         This class contains address information. 
       </meta>
       
       <id name = "addressID" type = "int" column = "address_id">
