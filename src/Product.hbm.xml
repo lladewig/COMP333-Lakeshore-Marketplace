@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.marketplace.domain.Product" table = "product">
+      
+      <meta attribute = "class-description">
+         This class contains product information. 
+      </meta>
+      
+      <id name = "productID" type = "int" column = "product_id">
+         <generator class="increment"/>
+      </id>
+      
+      <many-to-one name="partner" class="com.marketplace.domain.Partner"
+            column="partner_id" unique="true" not-null="true"
+            cascade="none" />
+      <property name = "productName" column = "product_name" type = "string"/>
+      <property name = "productDescription" column = "product_description" type = "string"/>
+      <property name = "productCost" column = "product_cost" type ="double"/>
+   </class>
+</hibernate-mapping>

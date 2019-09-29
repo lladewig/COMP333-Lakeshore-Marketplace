@@ -12,8 +12,8 @@ CREATE TABLE partner(
 CREATE TABLE product(
     product_id SERIAL PRIMARY KEY,
     product_name VARCHAR(255),
-    partner_owner INT REFERENCES partner(partner_id),
-    product_cost FLOAT,
+    partner_id INT REFERENCES partner(partner_id),
+    product_cost DECIMAL,
     product_description VARCHAR(255)
 );
 
@@ -56,7 +56,7 @@ CREATE TABLE product_order(
     customer_id INT REFERENCES customer(customer_id),
     product_id INT REFERENCES product(product_id),
     payment_id INT REFERENCES payment(payment_id),
-    order_cost FLOAT,
+    order_cost DECIMAL,
     shipment_address INT REFERENCES address(address_id),
     order_status VARCHAR(255)
 );

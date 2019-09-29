@@ -7,7 +7,7 @@ This is a group project created by Lindsay, Carolina, and Maha for COMP333: Web 
 This guide assumes that you have PostgreSQL properly configured and installed.
 
 To setup the database on your local machine, run: 
-```
+```bash
 sudo -u $USER psql < setup.sql
 ```
 
@@ -18,7 +18,8 @@ Maven dependencies should take care of the rest for you.
 In `hibernate.cfg.xml`, make sure to change the `connection.username` to reflect what your username is for PostgreSQL. This will usually be the same as your $USER variable.
 
 ## Remote Database (RDS AWS)
+
 Now, we have a database on AWS. If you would like to connect to the database from the command line, use this command:
-```
+```bash
 psql --host=webservices-lakeshore-mp.clvkxzutxsxi.us-east-2.rds.amazonaws.com --port=5432 --username=webservices --password --dbname=lakeshore_marketplace
 ```
