@@ -15,7 +15,7 @@
       </id>
       
       <many-to-one name="customer" class="com.marketplace.domain.Customer"
-            column="customer_id" unique="true" not-null="false"
+            column="customer_id" unique="true" not-null="true"
             cascade="none" />
       <property name = "streetAddress" column = "street_address" type = "string"/>
       <property name = "unitNumber" column = "unit_number" type = "string"/>
