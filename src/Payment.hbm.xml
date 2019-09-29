@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.marketplace.domain.Payment" table = "payment">
+      
+      <meta attribute = "class-description">
+         This class contains payment information. 
+      </meta>
+      
+      <id name = "paymentID" type = "int" column = "payment_id">
+         <generator class="increment"/>
+      </id>
+      
+      <many-to-one name="customer" class="com.marketplace.domain.Customer"
+            column="customer_id" unique="true" not-null="true"
+            cascade="none" />
+      <property name = "cardNumber" column = "card_number" type = "int"/>
+      <property name = "securityCode" column = "security_code" type = "int"/>
+      <property name = "expirationDate" column = "expiration_date" type = "string"/>
+   </class>
+</hibernate-mapping>
