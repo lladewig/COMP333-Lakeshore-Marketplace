@@ -10,7 +10,7 @@ public class Partner {
 	public PartnerDAL(String partner_name, String partner_type, String partner_details) {
 		this.partner_name = partner_name;
 		this.partner_type= partner_type;
-		this.partner_details = partner_detaols;
+		this.partner_details = partner_details;
 		
 	}
 	public Partner() {
