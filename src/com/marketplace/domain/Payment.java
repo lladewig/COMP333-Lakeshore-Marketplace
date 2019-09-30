@@ -15,7 +15,6 @@ public class Payment {
 		this.securityCode = securityCode;
 		this.expirationDate = expirationDate;
 		this.billingAddress = billingAddress;
-		
 	}
 	
 	public Payment() {

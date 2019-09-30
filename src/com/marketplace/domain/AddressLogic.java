@@ -18,7 +18,7 @@ public class AddressLogic {
 		return AddressDAL.addAddress(custID, streetAddress, unitNumber, zipCode, city, state);
 	}
 	
-	public static Address deleteAddress(int addressID) {
+	public Address deleteAddress(int addressID) {
 		return AddressDAL.deleteAddress(addressID);
 	}
 }

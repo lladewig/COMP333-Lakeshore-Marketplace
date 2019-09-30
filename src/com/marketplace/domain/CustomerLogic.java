@@ -23,6 +23,10 @@ public class CustomerLogic {
 		return customer;
 	}
 	
+	public Customer addCustomer(String firstName, String lastName, int phoneNumber) {
+		return CustomerDAL.addCustomer(firstName, lastName, phoneNumber);
+	}
+	
 	public Customer updateCustomerFirstName(String firstName, int id) {
 		Customer customer = CustomerDAL.updateCustomerFirstName(firstName, id);
 		return customer;

@@ -5,7 +5,6 @@
 
 <hibernate-mapping>
    <class name = "com.marketplace.domain.Payment" table = "payment">
-      
       <meta attribute = "class-description">
          This class contains payment information. 
       </meta>
@@ -17,7 +16,7 @@
       <many-to-one name="customer" class="com.marketplace.domain.Customer"
             column="customer_id" unique="true" not-null="true"
             cascade="none" />
-      <many-to-one name="billingAddress" class="com.marketplace.domain.Customer"
+      <many-to-one name="billingAddress" class="com.marketplace.domain.Address"
             column="billing_address" unique="true" not-null="true"
             cascade="none" />      
       <property name = "cardNumber" column = "card_number" type = "int"/>
