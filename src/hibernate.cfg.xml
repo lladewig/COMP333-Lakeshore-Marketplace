@@ -27,5 +27,8 @@
         <mapping resource = "Address.hbm.xml"/>
         <mapping resource = "Partner.hbm.xml"/>
         <mapping resource = "Product.hbm.xml"/>
+        <mapping resource = "Payment.hbm.xml"/>
+        <mapping resource = "Order.hbm.xml"/>
+        <mapping resource = "Review.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
