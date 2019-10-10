@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.marketplace.domain.review.Review" table = "review">
+      
+      <meta attribute = "class-description">
+         This class contains review information. 
+      </meta>
+      
+      <id name = "reviewID" type = "int" column = "review_id">
+         <generator class="increment"/>
+      </id>
+      
+      <many-to-one name="customer" class="com.marketplace.domain.customer.Customer"
+            column="customer_id" unique="true" not-null="true"
+            cascade="none" />
+      <many-to-one name="product" class="com.marketplace.domain.product.Product"
+            column="product_id" unique="true" not-null="true"
+            cascade="none" />      
+      <property name = "reviewBody" column = "review_body" type = "string"/>
+      <property name = "reviewScore" column = "review_score" type = "int"/>
+   </class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name = "com.marketplace.domain.partner.Partner" table = "partner">
+      
+      <meta attribute = "class-description">
+         This class contains partner information. 
+      </meta>
+      
+      <id name = "partnerID" type = "int" column = "partner_id">
+         <generator class="increment"/>
+      </id>
+
+      <property name = "partnerName" column = "partner_name" type = "string"/>
+      <property name = "partnerType" column = "partner_type" type = "string"/>
+      <property name = "partnerDetails" column = "partner_details" type = "string"/>
+   </class>
+</hibernate-mapping>
