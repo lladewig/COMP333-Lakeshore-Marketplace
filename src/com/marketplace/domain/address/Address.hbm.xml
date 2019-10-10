@@ -4,7 +4,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "com.marketplace.domain.Address" table = "address">
+   <class name = "com.marketplace.domain.address.Address" table = "address">
       
       <meta attribute = "class-description">
          This class contains address information. 
@@ -14,7 +14,7 @@
          <generator class="increment"/>
       </id>
       
-      <many-to-one name="customer" class="com.marketplace.domain.Customer"
+      <many-to-one name="customer" class="com.marketplace.domain.customer.Customer"
             column="customer_id" unique="true" not-null="true"
             cascade="none" />
       <property name = "streetAddress" column = "street_address" type = "string"/>

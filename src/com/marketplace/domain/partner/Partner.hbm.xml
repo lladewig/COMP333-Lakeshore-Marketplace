@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "com.marketplace.domain.Partner" table = "partner">
+   <class name = "com.marketplace.domain.partner.Partner" table = "partner">
       
       <meta attribute = "class-description">
          This class contains partner information. 

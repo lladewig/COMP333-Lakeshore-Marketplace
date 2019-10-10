@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-   <class name = "com.marketplace.domain.Product" table = "product">
+   <class name = "com.marketplace.domain.product.Product" table = "product">
       
       <meta attribute = "class-description">
          This class contains product information. 
@@ -13,7 +13,7 @@
          <generator class="increment"/>
       </id>
       
-      <many-to-one name="partner" class="com.marketplace.domain.Partner"
+      <many-to-one name="partner" class="com.marketplace.domain.partner.Partner"
             column="partner_id" unique="true" not-null="true"
             cascade="none" />
       <property name = "productName" column = "product_name" type = "string"/>
