@@ -1,4 +1,7 @@
-package com.marketplace.domain;
+package com.marketplace.domain.payment;
+
+import com.marketplace.domain.address.Address;
+import com.marketplace.domain.customer.Customer;
 
 public class Payment {
 	

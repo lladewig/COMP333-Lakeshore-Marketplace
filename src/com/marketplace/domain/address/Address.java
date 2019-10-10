@@ -1,4 +1,6 @@
-package com.marketplace.domain;
+package com.marketplace.domain.address;
+
+import com.marketplace.domain.customer.Customer;
 
 public class Address {
 	private int addressID;

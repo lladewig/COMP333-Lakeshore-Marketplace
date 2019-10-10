@@ -1,9 +1,9 @@
-package com.marketplace.domain;
+package com.marketplace.domain.customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.marketplace.dal.CustomerDAL;
+import com.marketplace.dal.customer.CustomerDAL;
 
 public class CustomerLogic {
 	

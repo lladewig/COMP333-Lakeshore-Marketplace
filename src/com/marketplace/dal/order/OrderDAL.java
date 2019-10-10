@@ -1,4 +1,4 @@
-package com.marketplace.dal;
+package com.marketplace.dal.order;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.marketplace.domain.Order;
-import com.marketplace.domain.Address;
-import com.marketplace.domain.Customer;
-import com.marketplace.domain.Payment;
-import com.marketplace.domain.Product;
+import com.marketplace.domain.address.Address;
+import com.marketplace.domain.customer.Customer;
+import com.marketplace.domain.order.Order;
+import com.marketplace.domain.payment.Payment;
+import com.marketplace.domain.product.Product;
 
 public class OrderDAL {
 	

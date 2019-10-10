@@ -1,8 +1,8 @@
-package com.marketplace.domain;
+package com.marketplace.domain.review;
 
 import java.util.List;
 
-import com.marketplace.dal.ReviewDAL;
+import com.marketplace.dal.review.ReviewDAL;
 
 public class ReviewLogic {
 	

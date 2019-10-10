@@ -1,9 +1,10 @@
-package com.marketplace.domain;
+package com.marketplace.domain.payment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.marketplace.dal.PaymentDAL;
+import com.marketplace.dal.payment.PaymentDAL;
+import com.marketplace.domain.address.Address;
 
 public class PaymentLogic {
 	

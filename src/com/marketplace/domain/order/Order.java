@@ -1,4 +1,9 @@
-package com.marketplace.domain;
+package com.marketplace.domain.order;
+
+import com.marketplace.domain.address.Address;
+import com.marketplace.domain.customer.Customer;
+import com.marketplace.domain.payment.Payment;
+import com.marketplace.domain.product.Product;
 
 public class Order {
 	

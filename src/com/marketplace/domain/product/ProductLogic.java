@@ -1,8 +1,9 @@
-package com.marketplace.domain;
+package com.marketplace.domain.product;
 
 import java.util.List;
 
-import com.marketplace.dal.ProductDAL;
+import com.marketplace.dal.product.ProductDAL;
+import com.marketplace.domain.partner.Partner;
 
 public class ProductLogic {
 	

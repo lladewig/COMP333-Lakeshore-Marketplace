@@ -1,9 +1,10 @@
-package com.marketplace.domain;
+package com.marketplace.domain.order;
 
 import java.util.List;
 
-import com.marketplace.dal.OrderDAL;
-import com.marketplace.dal.PaymentDAL;
+import com.marketplace.dal.order.OrderDAL;
+import com.marketplace.dal.payment.PaymentDAL;
+import com.marketplace.domain.address.Address;
 
 public class OrderLogic {
 	

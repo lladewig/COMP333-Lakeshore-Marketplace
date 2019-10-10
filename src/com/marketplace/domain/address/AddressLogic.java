@@ -1,8 +1,8 @@
-package com.marketplace.domain;
+package com.marketplace.domain.address;
 
 import java.util.List;
 
-import com.marketplace.dal.AddressDAL;
+import com.marketplace.dal.address.AddressDAL;
 
 public class AddressLogic {
 	

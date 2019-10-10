@@ -1,4 +1,4 @@
-package com.marketplace.dal;
+package com.marketplace.dal.address;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.marketplace.domain.Address;
-import com.marketplace.domain.Customer;
+import com.marketplace.domain.address.Address;
+import com.marketplace.domain.customer.Customer;
 
 public class AddressDAL {
 	

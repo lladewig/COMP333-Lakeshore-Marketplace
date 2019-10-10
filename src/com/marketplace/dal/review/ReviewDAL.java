@@ -1,4 +1,4 @@
-package com.marketplace.dal;
+package com.marketplace.dal.review;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.marketplace.domain.Review;
-import com.marketplace.domain.Product;
-import com.marketplace.domain.Customer;
+import com.marketplace.domain.customer.Customer;
+import com.marketplace.domain.product.Product;
+import com.marketplace.domain.review.Review;
 
 
 public class ReviewDAL {

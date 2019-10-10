@@ -1,4 +1,4 @@
-package com.marketplace.dal;
+package com.marketplace.dal.customer;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
-import com.marketplace.domain.Customer;
+import com.marketplace.domain.customer.Customer;
 
 public class CustomerDAL {
 	

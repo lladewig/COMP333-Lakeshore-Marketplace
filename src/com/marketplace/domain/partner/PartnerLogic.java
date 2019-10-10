@@ -1,8 +1,8 @@
-package com.marketplace.domain;
+package com.marketplace.domain.partner;
 
 import java.util.List;
 
-import com.marketplace.dal.PartnerDAL;
+import com.marketplace.dal.partner.PartnerDAL;
 
 public class PartnerLogic {
 	

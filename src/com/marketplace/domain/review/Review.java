@@ -1,4 +1,7 @@
-package com.marketplace.domain;
+package com.marketplace.domain.review;
+
+import com.marketplace.domain.customer.Customer;
+import com.marketplace.domain.product.Product;
 
 public class Review {
 	private int reviewID;

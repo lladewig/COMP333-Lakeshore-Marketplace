@@ -1,4 +1,6 @@
-package com.marketplace.domain;
+package com.marketplace.domain.product;
+
+import com.marketplace.domain.partner.Partner;
 
 public class Product {
 	private int productID;

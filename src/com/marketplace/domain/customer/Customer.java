@@ -1,4 +1,4 @@
-package com.marketplace.domain;
+package com.marketplace.domain.customer;
 
 public class Customer {
 	

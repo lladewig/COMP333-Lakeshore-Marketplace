@@ -1,4 +1,4 @@
-package com.marketplace.domain;
+package com.marketplace.domain.partner;
 
 public class Partner {
 	private int partnerID;

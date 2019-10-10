@@ -1,4 +1,4 @@
-package com.marketplace.dal;
+package com.marketplace.dal.product;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.marketplace.domain.Partner;
-import com.marketplace.domain.Product;
+import com.marketplace.domain.partner.Partner;
+import com.marketplace.domain.product.Product;
 
 public class ProductDAL {
 
