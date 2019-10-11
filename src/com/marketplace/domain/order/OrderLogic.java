@@ -9,29 +9,35 @@ import com.marketplace.domain.address.Address;
 public class OrderLogic {
 	
 	public Order getOrderByID(int orderID) {
-		return OrderDAL.getOrderByID(orderID);
+		OrderDAL od = new OrderDAL();
+		return od.getOrderByID(orderID);
 	}	
 	
 	public List<Order> getAllOrdersForCustomer(int custID){
-		return OrderDAL.getAllOrdersForCustomer(custID);
+		OrderDAL od = new OrderDAL();
+		return od.getAllOrdersForCustomer(custID);
 	}
 	
 	public Order updateOrderStatus(String reviewStatus, int id) {
-		Order order = OrderDAL.updateOrderStatus(reviewStatus, id);
+		OrderDAL od = new OrderDAL();
+		Order order = od.updateOrderStatus(reviewStatus, id);
 		return order;
 	}
 
 	public Order updateOrderShipAddress(Address shipAddress, int id) {
-		Order order = OrderDAL.updateOrderShipAddress(shipAddress, id);
+		OrderDAL od = new OrderDAL();
+		Order order = od.updateOrderShipAddress(shipAddress, id);
 		return order;
 	}
 	
 	public Order addOrder(int custID, int paymentID, int productID, String status, Address shipmentAddress) {
-		return OrderDAL.addOrder(custID, paymentID, productID, status, shipmentAddress);
+		OrderDAL od = new OrderDAL();
+		return od.addOrder(custID, paymentID, productID, status, shipmentAddress);
 	}
 	
 	public static Order deleteOrder(int orderID) {
-		return OrderDAL.deleteOrder(orderID);
+		OrderDAL od = new OrderDAL();
+		return od.deleteOrder(orderID);
 	}
 }
 

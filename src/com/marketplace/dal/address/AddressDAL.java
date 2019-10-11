@@ -14,7 +14,7 @@ import com.marketplace.domain.customer.Customer;
 public class AddressDAL {
 	
 	
-	public static Address getAddressByID(int id) {
+	public Address getAddressByID(int id) {
 		Address address = new Address();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -26,7 +26,7 @@ public class AddressDAL {
 		return address;
 	}
 	
-	public static List<Address> getAllAddressForCustomer(int custID) {
+	public List<Address> getAllAddressForCustomer(int custID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -39,7 +39,7 @@ public class AddressDAL {
 		return addresses;
 	}
 	
-	public static Address addAddress(int custID, String streetAddress, String unitNumber, int zipCode, String city, String state) {	
+	public Address addAddress(int custID, String streetAddress, String unitNumber, int zipCode, String city, String state) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -54,7 +54,7 @@ public class AddressDAL {
 	    return address;
 	}
 	
-	public static Address deleteAddress(int id){
+	public Address deleteAddress(int id){
 		Address address = new Address();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

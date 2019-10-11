@@ -9,46 +9,55 @@ import com.marketplace.domain.address.Address;
 public class PaymentLogic {
 	
 	public Payment getPayment(int paymentID) {
-		Payment payment = PaymentDAL.getPaymentByID(paymentID);
+		PaymentDAL pd = new PaymentDAL();
+		Payment payment = pd.getPaymentByID(paymentID);
 		return payment;
 	}
 	
 	public List<Payment> getAllPayments() {
+		PaymentDAL pd = new PaymentDAL();
 		List<Payment> payments = new ArrayList<Payment>();
-		payments = PaymentDAL.getAllPayments();
+		payments = pd.getAllPayments();
 		return payments;
 	}
 	
 	public List<Payment> getAllPaymentsForCustomer(int custID){
-		return PaymentDAL.getAllPaymentsForCustomer(custID);
+		PaymentDAL pd = new PaymentDAL();
+		return pd.getAllPaymentsForCustomer(custID);
 	}
 	
 	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {
-		return PaymentDAL.addPayment(custID, cardNumber, securityCode, expirationDate, billingAddress);
+		PaymentDAL pd = new PaymentDAL();
+		return pd.addPayment(custID, cardNumber, securityCode, expirationDate, billingAddress);
 	}
 	
 	public Payment deletePayment(int id) {
-		Payment payment = PaymentDAL.deletePayment(id);
+		PaymentDAL pd = new PaymentDAL();
+		Payment payment = pd.deletePayment(id);
 		return payment;
 	}
 	
 	public Payment updatePaymentCardNumber(int cardNumber, int id) {
-		Payment payment = PaymentDAL.updatePaymentCardNumber(cardNumber, id);
+		PaymentDAL pd = new PaymentDAL();
+		Payment payment = pd.updatePaymentCardNumber(cardNumber, id);
 		return payment;
 	}
 	
 	public Payment updatePaymentSecurityCode(int securityCode, int id) {
-		Payment payment = PaymentDAL.updatePaymentSecurityCode(securityCode, id);
+		PaymentDAL pd = new PaymentDAL();
+		Payment payment = pd.updatePaymentSecurityCode(securityCode, id);
 		return payment;
 	}
 	
 	public Payment updatePaymentExpirationDate(String expirationDate, int id) {
-		Payment payment = PaymentDAL.updatePaymentExpirationDate(expirationDate, id);
+		PaymentDAL pd = new PaymentDAL();
+		Payment payment = pd.updatePaymentExpirationDate(expirationDate, id);
 		return payment;
 	}	
 	
 	public Payment updatePaymentBillingAddress(Address billingAddress, int id) {
-		Payment payment = PaymentDAL.updatePaymentBillingAddress(billingAddress, id);
+		PaymentDAL pd = new PaymentDAL();
+		Payment payment = pd.updatePaymentBillingAddress(billingAddress, id);
 		return payment;
 	}
 }

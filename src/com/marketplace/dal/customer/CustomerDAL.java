@@ -10,7 +10,7 @@ import com.marketplace.domain.customer.Customer;
 
 public class CustomerDAL {
 	
-	public static Customer getCustomerByID(int id) {
+	public Customer getCustomerByID(int id) {
 		Customer customer = new Customer();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -22,7 +22,7 @@ public class CustomerDAL {
 		return customer;
 	}
 	
-	public static List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers() {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -33,7 +33,7 @@ public class CustomerDAL {
 		return customers;
 	}
 	
-	public static Customer addCustomer(String firstName, String lastName, int phoneNumber) {
+	public Customer addCustomer(String firstName, String lastName, int phoneNumber) {
 		Customer newCust = new Customer(firstName, lastName, phoneNumber);
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -47,7 +47,7 @@ public class CustomerDAL {
 	    return newCust;
 	}
 	
-	public static Customer deleteCustomer(int id) {
+	public Customer deleteCustomer(int id) {
 		Customer customer = new Customer();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -64,7 +64,7 @@ public class CustomerDAL {
 		return customer;
 	}
 	
-	public static Customer updateCustomerFirstName(String firstName, int id) {
+	public Customer updateCustomerFirstName(String firstName, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -81,7 +81,7 @@ public class CustomerDAL {
 	    return customer;
 	}
 	
-	public static Customer updateCustomerLastName(String lastName, int id) {
+	public Customer updateCustomerLastName(String lastName, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -99,7 +99,7 @@ public class CustomerDAL {
 	}
 	
 
-	public static Customer updateCustomerPhoneNumber(int phoneNumber, int id) {
+	public Customer updateCustomerPhoneNumber(int phoneNumber, int id) {
 	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 		Session session = sf.openSession();

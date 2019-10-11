@@ -17,7 +17,7 @@ import com.marketplace.domain.product.Product;
 public class OrderDAL {
 	
 	
-	public static Order getOrderByID(int id) {
+	public Order getOrderByID(int id) {
 		Order order = new Order();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -29,7 +29,7 @@ public class OrderDAL {
 		return order;
 	}
 	
-	public static List<Order> getAllOrders() {
+	public List<Order> getAllOrders() {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -42,7 +42,7 @@ public class OrderDAL {
 		return orders;
 	}
 	
-	public static List<Order> getAllOrdersForCustomer(int custID) {
+	public List<Order> getAllOrdersForCustomer(int custID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -55,7 +55,7 @@ public class OrderDAL {
 		return orders;
 	}
 	
-	public static Order updateOrderStatus(String reviewStatus, int id) {
+	public Order updateOrderStatus(String reviewStatus, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -72,7 +72,7 @@ public class OrderDAL {
 	    return order;
 	}
 	
-	public static Order updateOrderShipAddress(Address shipAddress, int id) {
+	public Order updateOrderShipAddress(Address shipAddress, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -89,7 +89,7 @@ public class OrderDAL {
 	    return order;
 	}
 	
-	public static Order addOrder(int custID, int paymentID, int productID, String status, Address shipmentAddress) {	
+	public Order addOrder(int custID, int paymentID, int productID, String status, Address shipmentAddress) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -106,7 +106,7 @@ public class OrderDAL {
 	    return order;
 	}
 	
-	public static Order deleteOrder(int id){
+	public Order deleteOrder(int id){
 		Order order = new Order();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
