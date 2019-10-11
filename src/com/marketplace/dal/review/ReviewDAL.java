@@ -16,7 +16,7 @@ import com.marketplace.domain.review.Review;
 public class ReviewDAL {
 	
 	
-	public static Review getReviewByID(int id) {
+	public Review getReviewByID(int id) {
 		Review review = new Review();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -28,7 +28,7 @@ public class ReviewDAL {
 		return review;
 	}
 	
-	public static List<Review> getAllReviewForCustomer(int custID) {
+	public List<Review> getAllReviewForCustomer(int custID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -41,7 +41,7 @@ public class ReviewDAL {
 		return reviews;
 	}
 	
-	public static List<Review> getAllReviewForProduct(int productID) {
+	public List<Review> getAllReviewForProduct(int productID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -54,7 +54,7 @@ public class ReviewDAL {
 		return reviews;
 	}
 	
-	public static Review addReview(int custID, int reviewScore, int productID, String reviewBody) {	
+	public Review addReview(int custID, int reviewScore, int productID, String reviewBody) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -70,7 +70,7 @@ public class ReviewDAL {
 	    return review;
 	}
 	
-	public static Review deleteReview(int id){
+	public Review deleteReview(int id){
 		Review review = new Review();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();

@@ -12,7 +12,7 @@ import com.marketplace.domain.payment.Payment;
 
 public class PaymentDAL {
 	
-	public static Payment getPaymentByID(int id) {
+	public Payment getPaymentByID(int id) {
 		Payment payment = new Payment();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -24,7 +24,7 @@ public class PaymentDAL {
 		return payment;
 	}
 	
-	public static List<Payment> getAllPayments() {
+	public List<Payment> getAllPayments() {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -35,7 +35,7 @@ public class PaymentDAL {
 		return payments;
 	}
 	
-	public static List<Payment> getAllPaymentsForCustomer(int custID) {
+	public List<Payment> getAllPaymentsForCustomer(int custID) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -49,7 +49,7 @@ public class PaymentDAL {
 	}
 	
 	
-	public static Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {	
+	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -64,7 +64,7 @@ public class PaymentDAL {
 	    return Pay;
 	}
 	
-	public static Payment deletePayment(int id) {
+	public Payment deletePayment(int id) {
 		Payment payment = new Payment();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -81,7 +81,7 @@ public class PaymentDAL {
 		return payment;
 	}
 	
-	public static Payment updatePaymentCardNumber(int cardNumber, int id) {
+	public Payment updatePaymentCardNumber(int cardNumber, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -98,7 +98,7 @@ public class PaymentDAL {
 	    return payment;
 	}
 	
-	public static Payment updatePaymentSecurityCode(int securityCode, int id) {
+	public Payment updatePaymentSecurityCode(int securityCode, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -116,7 +116,7 @@ public class PaymentDAL {
 	}
 	
 
-	public static Payment updatePaymentExpirationDate(String expirationDate, int id) {
+	public Payment updatePaymentExpirationDate(String expirationDate, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
@@ -133,7 +133,7 @@ public class PaymentDAL {
 	    return payment;
 	}
 	
-	public static Payment updatePaymentBillingAddress(Address billingAddress, int id) {
+	public Payment updatePaymentBillingAddress(Address billingAddress, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();

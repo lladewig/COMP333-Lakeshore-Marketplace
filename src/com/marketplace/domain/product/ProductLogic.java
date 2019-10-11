@@ -8,27 +8,33 @@ import com.marketplace.domain.partner.Partner;
 public class ProductLogic {
 	
 	public static Product getProductByID(int id) {
-		return ProductDAL.getProductByID(id);
+		ProductDAL pd = new ProductDAL();
+		return pd.getProductByID(id);
 	}
 	
 	public List<Product> getAllProducts() {
-		return ProductDAL.getAllProducts();
+		ProductDAL pd = new ProductDAL();
+		return pd.getAllProducts();
 	}
 	
 	public List<Product> getAllProductsByPartner(int partnerID){
-		return ProductDAL.getAllProductsByPartner(partnerID);
+		ProductDAL pd = new ProductDAL();
+		return pd.getAllProductsByPartner(partnerID);
 	}
 	
 	public Product addProduct(Partner partner, String productName, String productDescription, double cost) {
-	    return ProductDAL.addProduct(partner, productName, productDescription, cost);
+		ProductDAL pd = new ProductDAL();
+	    return pd.addProduct(partner, productName, productDescription, cost);
 	}
 	
 	public Product deleteProduct(int id){
-		return ProductDAL.deleteProduct(id);
+		ProductDAL pd = new ProductDAL();
+		return pd.deleteProduct(id);
 	}
 	
 	public Product updateCost(int productID, double newCost) {
-	    return ProductDAL.updateCost(productID, newCost);
+		ProductDAL pd = new ProductDAL();
+	    return pd.updateCost(productID, newCost);
 	}
 
 }

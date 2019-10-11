@@ -14,7 +14,7 @@ import com.marketplace.domain.product.Product;
 public class ProductDAL {
 
 	
-	public static Product getProductByID(int id) {
+	public Product getProductByID(int id) {
 		Product product = new Product();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -26,7 +26,7 @@ public class ProductDAL {
 		return product;
 	}
 	
-	public static List<Product> getAllProducts() {
+	public List<Product> getAllProducts() {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -38,7 +38,7 @@ public class ProductDAL {
 		return products;
 	}
 	
-	public static List<Product> getAllProductsByPartner(int partnerID){
+	public List<Product> getAllProductsByPartner(int partnerID){
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -50,7 +50,7 @@ public class ProductDAL {
 		return products;
 	}
 	
-	public static Product addProduct(Partner partner, String productName, String productDescription, double cost) {	
+	public Product addProduct(Partner partner, String productName, String productDescription, double cost) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
@@ -64,7 +64,7 @@ public class ProductDAL {
 	    return product;
 	}
 	
-	public static Product deleteProduct(int id){
+	public Product deleteProduct(int id){
 		Product product = new Product();
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
@@ -81,7 +81,7 @@ public class ProductDAL {
 		return product;
 	}
 	
-	public static Product updateCost(int productID, double newCost) {
+	public Product updateCost(int productID, double newCost) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    

@@ -8,37 +8,44 @@ import com.marketplace.dal.customer.CustomerDAL;
 public class CustomerLogic {
 	
 	public Customer getCustomer(int custID) {
-		Customer customer = CustomerDAL.getCustomerByID(custID);
+		CustomerDAL cd = new CustomerDAL();
+		Customer customer = cd.getCustomerByID(custID);
 		return customer;
 	}
 	
 	public List<Customer> getAllCustomers() {
+		CustomerDAL cd = new CustomerDAL();
 		List<Customer> customers = new ArrayList<Customer>();
-		customers = CustomerDAL.getAllCustomers();
+		customers = cd.getAllCustomers();
 		return customers;
 	}
 	
 	public Customer deleteCustomer(int id) {
-		Customer customer = CustomerDAL.deleteCustomer(id);
+		CustomerDAL cd = new CustomerDAL();
+		Customer customer = cd.deleteCustomer(id);
 		return customer;
 	}
 	
 	public Customer addCustomer(String firstName, String lastName, int phoneNumber) {
-		return CustomerDAL.addCustomer(firstName, lastName, phoneNumber);
+		CustomerDAL cd = new CustomerDAL();
+		return cd.addCustomer(firstName, lastName, phoneNumber);
 	}
 	
 	public Customer updateCustomerFirstName(String firstName, int id) {
-		Customer customer = CustomerDAL.updateCustomerFirstName(firstName, id);
+		CustomerDAL cd = new CustomerDAL();
+		Customer customer = cd.updateCustomerFirstName(firstName, id);
 		return customer;
 	}
 	
 	public Customer updateCustomerLastName(String lastName, int id) {
-		Customer customer = CustomerDAL.updateCustomerLastName(lastName, id);
+		CustomerDAL cd = new CustomerDAL();
+		Customer customer = cd.updateCustomerLastName(lastName, id);
 		return customer;
 	}
 	
 	public Customer updateCustomerPhoneNumber(int phoneNumber, int id) {
-		Customer customer = CustomerDAL.updateCustomerPhoneNumber(phoneNumber, id);
+		CustomerDAL cd = new CustomerDAL();
+		Customer customer = cd.updateCustomerPhoneNumber(phoneNumber, id);
 		return customer;
 	}
 	
