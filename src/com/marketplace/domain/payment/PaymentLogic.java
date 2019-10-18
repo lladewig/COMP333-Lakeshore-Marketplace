@@ -26,9 +26,9 @@ public class PaymentLogic {
 		return pd.getAllPaymentsForCustomer(custID);
 	}
 	
-	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {
+	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, int billingAddressID) {
 		PaymentDAL pd = new PaymentDAL();
-		return pd.addPayment(custID, cardNumber, securityCode, expirationDate, billingAddress);
+		return pd.addPayment(custID, cardNumber, securityCode, expirationDate, billingAddressID);
 	}
 	
 	public Payment deletePayment(int id) {
@@ -55,9 +55,9 @@ public class PaymentLogic {
 		return payment;
 	}	
 	
-	public Payment updatePaymentBillingAddress(Address billingAddress, int id) {
+	public Payment updatePaymentAddress(int addressID, int id) {
 		PaymentDAL pd = new PaymentDAL();
-		Payment payment = pd.updatePaymentBillingAddress(billingAddress, id);
+		Payment payment = pd.updatePaymentAddress(addressID, id);
 		return payment;
-	}
+	}	
 }

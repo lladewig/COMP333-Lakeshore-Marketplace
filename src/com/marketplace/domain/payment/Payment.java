@@ -64,11 +64,11 @@ public class Payment {
 		expirationDate = newexpirationDate;
 	}	
 	
-	public Address getBillingAddress() {
+	public Address getbillingAddress() {
 		return billingAddress;
 	}
 	
-	public void setBillingAddress(Address newBillingAddress) {
+	public void setbillingAddress(Address newBillingAddress) {
 		billingAddress = newBillingAddress;
 	}	
 }
