@@ -83,7 +83,7 @@ Update Customer's phone number:
 </CustomerRequest>
 ```
 
-`CustomerResponse` sample:
+`Customer` sample:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Customer>
@@ -135,7 +135,7 @@ Delete address:
 </AddressRequest>
 ```
 
-`AddressResponse` sample:
+`Address` sample:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Address>
@@ -219,7 +219,7 @@ Update payment address:
         <addressID>1</addressID>
 </PaymentRequest>
 ```
-`PaymentResponse` sample:
+`Payment` sample:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Payment>
@@ -290,7 +290,7 @@ Update partner details:
 </PartnerRequest>
 ```
 
-`PartnerResponse` sample:
+`Partner` sample:
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Partner>
