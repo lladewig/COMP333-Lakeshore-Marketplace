@@ -21,11 +21,11 @@ public class PartnerActivity {
 		return pRes;
 	}
 	
-	public List<PartnerRepresentation> getAllPartners(){
+	public List<PartnerRepresentation> getAllPartners(int offset, int limit){
 		PartnerLogic pLogic = new PartnerLogic();	
 		List<Partner> partners = new ArrayList<Partner>();
 		List<PartnerRepresentation> pResponses = new ArrayList<PartnerRepresentation>();
-		partners = pLogic.getAllPartners();
+		partners = pLogic.getAllPartners(offset, limit);
 		
 		Iterator<Partner> it = partners.iterator();
 		while(it.hasNext()) {

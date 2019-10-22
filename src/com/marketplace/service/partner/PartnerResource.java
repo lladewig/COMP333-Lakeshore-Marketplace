@@ -1,7 +1,6 @@
 package com.marketplace.service.partner;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,8 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import com.marketplace.domain.partner.Partner;
-import com.marketplace.domain.partner.PartnerLogic;
+import javax.ws.rs.QueryParam;
 
 @Path("/partnerservice/")
 public class PartnerResource {
@@ -32,10 +30,14 @@ public class PartnerResource {
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/partners")
-	public List<PartnerRepresentation> getAllPartners(){
-		System.out.println("GET METHOD Request from Client for Get All Partners");
+	public List<PartnerRepresentation> getAllPartners(@QueryParam("offset") int offset, @QueryParam("limit") int limit){
+		// won't allow a request for 0 addresses, so default to 5
+		if (limit == 0) {
+			limit = 5;
+		}
+		System.out.println("GET METHOD Request from Client for Get All Partners with offset " + offset + " and limit "+ limit);
 		PartnerActivity pActivity = new PartnerActivity();
-		return pActivity.getAllPartners();
+		return pActivity.getAllPartners(offset, limit);
 	}
 
 	@POST

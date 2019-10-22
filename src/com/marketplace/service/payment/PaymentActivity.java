@@ -22,11 +22,11 @@ public class PaymentActivity {
 		return pRes;
 	}
 	
-	public List<PaymentRepresentation> getAllPayments() {
+	public List<PaymentRepresentation> getAllPayments(int offset, int limit) {
 		PaymentLogic pLogic = new PaymentLogic();	
 		List<Payment> payments = new ArrayList<Payment>();
 		List<PaymentRepresentation> pResponses = new ArrayList<PaymentRepresentation>();
-		payments = pLogic.getAllPayments();
+		payments = pLogic.getAllPayments(offset, limit);
 		
 		Iterator<Payment> it = payments.iterator();
 		while(it.hasNext()) {

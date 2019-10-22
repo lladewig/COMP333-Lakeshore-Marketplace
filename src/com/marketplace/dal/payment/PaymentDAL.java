@@ -24,11 +24,11 @@ public class PaymentDAL {
 		return payment;
 	}
 	
-	public List<Payment> getAllPayments() {
+	public List<Payment> getAllPayments(int offset, int limit) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    Query query = session.createQuery("from Payment");
+	    Query query = session.createQuery("from Payment").setFirstResult(offset).setMaxResults(limit);
 	    List<Payment> payments = query.list();
 	    
 		session.close();

@@ -24,11 +24,11 @@ public class AddressActivity {
 		return aRes;
 	}
 	
-	public List<AddressRepresentation> getAllAddress(){
+	public List<AddressRepresentation> getAllAddress(int offset, int limit){
 		AddressLogic aLogic = new AddressLogic();	
 		List<Address> addresses = new ArrayList<Address>();
 		List<AddressRepresentation> aResponses = new ArrayList<AddressRepresentation>();
-		addresses = aLogic.getAllAddress();
+		addresses = aLogic.getAllAddress(offset, limit);
 		
 		Iterator<Address> it = addresses.iterator();
 		while(it.hasNext()) {

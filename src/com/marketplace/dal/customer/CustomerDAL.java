@@ -22,11 +22,11 @@ public class CustomerDAL {
 		return customer;
 	}
 	
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers(int offset, int limit) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    Query query = session.createQuery("from Customer");
+	    Query query = session.createQuery("from Customer").setFirstResult(offset).setMaxResults(limit);
 	    List<Customer> customers = query.list();
 	    
 		session.close();

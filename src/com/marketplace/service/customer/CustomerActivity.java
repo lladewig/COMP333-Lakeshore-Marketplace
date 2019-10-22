@@ -23,11 +23,11 @@ public class CustomerActivity {
 	}
 	
 	
-	public List<CustomerRepresentation> getAllCustomers() {
+	public List<CustomerRepresentation> getAllCustomers(int offset, int limit) {
 		CustomerLogic custLogic = new CustomerLogic();	
 		List<Customer> customers = new ArrayList<Customer>();
 		List<CustomerRepresentation> cResponses = new ArrayList<CustomerRepresentation>();
-		customers = custLogic.getAllCustomers();
+		customers = custLogic.getAllCustomers(offset, limit);
 		
 		Iterator<Customer> it = customers.iterator();
 		while(it.hasNext()) {

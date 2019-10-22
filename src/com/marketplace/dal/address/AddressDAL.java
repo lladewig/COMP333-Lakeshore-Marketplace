@@ -26,13 +26,13 @@ public class AddressDAL {
 		return address;
 	}
 	
-	public List<Address> getAllAddress() {
+	public List<Address> getAllAddress(int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Address");
+	    Query query = session.createQuery("from Address").setFirstResult(offset).setMaxResults(limit);
 	    List<Address> addresses = query.list();
 	    
 		session.close();

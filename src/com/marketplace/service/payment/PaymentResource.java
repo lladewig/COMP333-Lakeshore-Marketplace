@@ -10,6 +10,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 @Path("/paymentservice/")
 public class PaymentResource {
@@ -28,10 +29,14 @@ public class PaymentResource {
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/payments")
-	public List<PaymentRepresentation> getAllPayments() {
-		System.out.println("GET METHOD Request from Client for Get All Payments");
+	public List<PaymentRepresentation> getAllPayments(@QueryParam("offset") int offset, @QueryParam("limit") int limit) {
+		// won't allow a request for 0 addresses, so default to 5
+		if (limit == 0) {
+			limit = 5;
+		}
+		System.out.println("GET METHOD Request from Client for Get All Payments with offset " + offset + " and limit " + limit);
 		PaymentActivity pActivity = new PaymentActivity();
-		return pActivity.getAllPayments();
+		return pActivity.getAllPayments(offset, limit);
 	}
 	
 	@GET

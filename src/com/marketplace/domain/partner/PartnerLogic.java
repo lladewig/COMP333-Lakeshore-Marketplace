@@ -11,9 +11,9 @@ public class PartnerLogic {
 		return pd.getPartnerByID(partnerID);
 	}
 	
-	public List<Partner> getAllPartners(){
+	public List<Partner> getAllPartners(int offset, int limit){
 		PartnerDAL pd = new PartnerDAL();
-		return pd.getAllPartners();
+		return pd.getAllPartners(offset, limit);
 	}
 
 	public Partner addPartner(String partnerName, String partnerType, String partnerDetails) {

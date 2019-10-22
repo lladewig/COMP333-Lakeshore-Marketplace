@@ -1,7 +1,5 @@
 package com.marketplace.service.customer;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.ws.rs.DELETE;
@@ -12,9 +10,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import com.marketplace.service.customer.CustomerRepresentation;
-import com.marketplace.domain.customer.*;;
 
 
 @Path("/customerservice/")
@@ -32,10 +30,14 @@ public class CustomerResource {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customers")
-	public List<CustomerRepresentation> getAllCustomers() {
-		System.out.println("GET METHOD Request from Client for Get All Customers");
+	public List<CustomerRepresentation> getAllCustomers(@QueryParam("offset") int offset, @QueryParam("limit") int limit) {
+		// won't allow a request for 0 addresses, so default to 5
+		if (limit == 0) {
+			limit = 5;
+		}
+		System.out.println("GET METHOD Request from Client for Get All Customers with offset " + offset + " and limit " + limit);
 		CustomerActivity cActivity = new CustomerActivity();
-		return cActivity.getAllCustomers();
+		return cActivity.getAllCustomers(offset, limit);
 	}
 	
 	@POST

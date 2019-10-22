@@ -14,10 +14,10 @@ public class PaymentLogic {
 		return payment;
 	}
 	
-	public List<Payment> getAllPayments() {
+	public List<Payment> getAllPayments(int offset, int limit) {
 		PaymentDAL pd = new PaymentDAL();
 		List<Payment> payments = new ArrayList<Payment>();
-		payments = pd.getAllPayments();
+		payments = pd.getAllPayments(offset, limit);
 		return payments;
 	}
 	

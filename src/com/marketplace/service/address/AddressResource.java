@@ -9,12 +9,12 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 @Path("/addressservice/")
 public class AddressResource {
 	
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/addresses/{addressID}")
 	public AddressRepresentation getAddressByID(@PathParam("addressID") int addressID) {
@@ -25,13 +25,16 @@ public class AddressResource {
 	}
 	
 	@GET
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/addresses")
-	public List<AddressRepresentation> getAllAddress(){
-		System.out.println("GET METHOD Request from Client for Get All Addresses");
+	public List<AddressRepresentation> getAllAddress(@QueryParam("offset") int offset, @QueryParam("limit") int limit){
+		// won't allow a request for 0 addresses, so default to 5
+		if (limit == 0) {
+			limit = 5;
+		}
+		System.out.println("GET METHOD Request from Client for Get All Addresses with offset " + offset + " and limit " + limit);
 		AddressActivity addActivity = new AddressActivity();
-		return addActivity.getAllAddress();
+		return addActivity.getAllAddress(offset, limit);
 	}
 	
 	@POST
@@ -45,7 +48,6 @@ public class AddressResource {
 	}
 	
 	@DELETE
-	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/addresses/{addressID}")
 	public AddressRepresentation deleteAddress(@PathParam("addressID") int addressID) {

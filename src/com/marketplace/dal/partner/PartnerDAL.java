@@ -25,12 +25,12 @@ public class PartnerDAL {
 		return partner;
 	}
 	
-	public List<Partner> getAllPartners() {
+	public List<Partner> getAllPartners(int offset, int limit) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Partner");
+	    Query query = session.createQuery("from Partner").setFirstResult(offset).setMaxResults(limit);
 	    List<Partner> partners = query.list();
 	    
 		session.close();
