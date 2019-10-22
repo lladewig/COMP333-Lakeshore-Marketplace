@@ -29,9 +29,9 @@ This is the model of our database used in this project.
 ![LMP Lakeshore Marketplace DB](https://github.com/lladewig/COMP333-Project-2/blob/master/LMP%20Database%20Model.png)
 
 # API
-Featured here are some sample responses and requests from the various service endpoints. Currently, each endpoint accepts `JSON` and `XML`, but all sample responses and requests are shown in `XML`.
+Featured here are some sample responses and requests from the various service endpoints. Currently, each endpoint accepts `JSON` and `XML`, but all sample responses and requests are shown in `XML`. Additionally, each endpoint and its respective HTTP verb are shown.
 
-Additionally, each endpoint and its respective HTTP verb are shown.
+All endpoints that retrieve all of an item support pagination. If offset is not specified, it defaults to 0. If limit is not specified, it defaults to 5, with the exception for retrieving all payments for a specific customer, in which case the limit defaults to 20.
 ## Customer
 The Customer endpoint has the following URIs and corresponding methods:
 
