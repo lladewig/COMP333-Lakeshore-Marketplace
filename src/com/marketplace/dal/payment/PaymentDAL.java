@@ -35,13 +35,13 @@ public class PaymentDAL {
 		return payments;
 	}
 	
-	public List<Payment> getAllPaymentsForCustomer(int custID) {
+	public List<Payment> getAllPaymentsForCustomer(int custID, int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Payment where customer_id=:custID").setParameter("custID", custID);
+	    Query query = session.createQuery("from Payment where customer_id=:custID").setParameter("custID", custID).setFirstResult(offset).setMaxResults(limit);
 	    List<Payment> payments = query.list();
 	    
 		session.close();

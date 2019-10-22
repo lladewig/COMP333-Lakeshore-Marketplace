@@ -43,10 +43,14 @@ public class PaymentResource {
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/payments/customer/{customerID}")
-	public List<PaymentRepresentation> getAllPaymentsForCustomer(@PathParam("customerID") int customerID){
-		System.out.println("GET METHOD Request from Client for Get Payments for Customer");
+	public List<PaymentRepresentation> getAllPaymentsForCustomer(@PathParam("customerID") int customerID, @QueryParam("offset") int offset, @QueryParam("limit") int limit){
+		// won't allow a request for 0 addresses, so default to 5
+		if (limit == 0) {
+			limit = 20;
+		}
+		System.out.println("GET METHOD Request from Client for Get Payments for Customer with offset " + offset + " and limit " + limit);
 		PaymentActivity pActivity = new PaymentActivity();
-		return pActivity.getAllPaymentsForCustomer(customerID);
+		return pActivity.getAllPaymentsForCustomer(customerID, offset, limit);
 	}
 	
 	@POST

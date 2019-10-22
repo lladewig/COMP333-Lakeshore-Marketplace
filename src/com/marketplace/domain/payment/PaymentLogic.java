@@ -21,9 +21,9 @@ public class PaymentLogic {
 		return payments;
 	}
 	
-	public List<Payment> getAllPaymentsForCustomer(int custID){
+	public List<Payment> getAllPaymentsForCustomer(int custID, int offset, int limit){
 		PaymentDAL pd = new PaymentDAL();
-		return pd.getAllPaymentsForCustomer(custID);
+		return pd.getAllPaymentsForCustomer(custID, offset, limit);
 	}
 	
 	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, int billingAddressID) {

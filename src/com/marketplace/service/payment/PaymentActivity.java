@@ -43,12 +43,12 @@ public class PaymentActivity {
 		return pResponses;
 	}
 	
-	public List<PaymentRepresentation> getAllPaymentsForCustomer(int customerID){
+	public List<PaymentRepresentation> getAllPaymentsForCustomer(int customerID, int offset, int limit){
 
 		PaymentLogic pLogic = new PaymentLogic();	
 		List<Payment> payments = new ArrayList<Payment>();
 		List<PaymentRepresentation> pResponses = new ArrayList<PaymentRepresentation>();
-		payments = pLogic.getAllPaymentsForCustomer(customerID);
+		payments = pLogic.getAllPaymentsForCustomer(customerID, offset, limit);
 		
 		Iterator<Payment> it = payments.iterator();
 		while(it.hasNext()) {
