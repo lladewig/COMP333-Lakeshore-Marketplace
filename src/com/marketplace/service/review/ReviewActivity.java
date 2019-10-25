@@ -69,7 +69,7 @@ public class ReviewActivity  {
 	
 	public ReviewRepresentation updateReviewScore(ReviewRequest rReq) {
 		ReviewLogic rLogic = new ReviewLogic();
-		Review review = rLogic.updateReviewScore(rReq.getReviewScore(), rReq.getreviewID());
+		Review review = rLogic.updateReviewScore(rReq.getReviewScore(), rReq.getReviewID());
 		
 		ReviewRepresentation rRes = new ReviewRepresentation();
 		rRes.setreviewID(review.getreviewID());
