@@ -3,7 +3,7 @@ package com.marketplace.service.review;
 import java.util.ArrayList;
 
 
-public class ReviewActivity {
+public class ReviewActivity  {
 	
 	public ReviewRepresentation getReview(int reviewID) {
 		ReviewLogic rLogic = new ReviewLogic();

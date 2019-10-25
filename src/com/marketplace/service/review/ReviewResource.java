@@ -7,14 +7,14 @@ import javax.ws.rs.Produces;
 
 
 @Path("/reviewservice/")
-public class ReviewResource {
+public class ReviewResource  {
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{reviewID}")
 	public ReviewRepresentation getReview(@PathParam("reviewID") int reviewID) {
 		System.out.println("GET METHOD Request from Client to Get Reviews");
-		ReviewActivity rActivity = new ReviewActivity();
+		ReviewActivity rActivity= new ReviewActivity();
 		return rActivity.getReviewByID(reviewID);
 		
 	}
@@ -40,4 +40,3 @@ public class ReviewResource {
 	}
 	
 	}
-}
