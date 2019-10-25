@@ -13,8 +13,11 @@ import javax.xml.bind.annotation.XmlType;
 
 public class ReviewRepresentation  {
 	
+	
 	private int reviewID;
 	private int reviewScore;
+	private Customer customer;
+	private Product product;
 	private String reviewBody;
 	
 	public ReviewRepresentation() {}
@@ -32,10 +35,26 @@ public class ReviewRepresentation  {
 	public void setReviewScore(int reviewScore) {
 		this.reviewScore = reviewScore;
 	}
+	
+	public Customer getcustomer() {
+		return customer;
+	}
+	
+	public void setcustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	public Product getproduct() {
+		return product;
+	}
+	
+	public void setproduct(Product product) {
+		this.product = product;
+	}
 	public String getReviewBody() {
 		return reviewBody;
 	}
 	public void setReviewBody(String reviewBody) {
-		this.reviewody = reviewBody;
+		this.reviewbody = reviewBody;
 	}
 }
