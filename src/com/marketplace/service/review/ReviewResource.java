@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 @Path("/reviewservice/")
 public class ReviewResource  {
 
-	@GET
+@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews/{reviewID}")
 	public ReviewRepresentation getReview(@PathParam("reviewID") int reviewID) {
@@ -20,7 +20,7 @@ public class ReviewResource  {
 	}
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/review")
+	@Path("/reviews")
 	public List<ReviewRepresentation> getAllReviews(@QueryParam("offset") int offset, @QueryParam("limit") int limit) {
 		if (limit == 0) {
 			limit = 20;
@@ -33,10 +33,30 @@ public class ReviewResource  {
 	@POST
 	@Produces({"application/xml" , "application/json"})
 	@Path("/reviews")
-	public ReviewsRepresentation rCustomer(ReviewRequest rReq) {
+	public ReviewRepresentation addReview(ReviewRequest rReq) {
 		System.out.println("POST METHOD Request from Client to Add Reviews");
 		ReviewActivity rActivity = new ReviewActivity();
-		return rActivity.rCustomer(rReq);
+		return rActivity.addReview(rReq);
+	}
+	@PUT
+	@Produces({"application/xml" , "application/json"})
+	@Path("/reviews")
+	public ReviewRepresentation updateReview(ReviewRequest rReq) {
+		System.out.println("POST METHOD Request from Client for Update Review");
+		ReviewActivity rActivity = new ReviewActivity();
+		return rActivity.updateReview(rReq);
+	}
+	
+	@DELETE
+	@Produces({"application/xml" , "application/json"})
+	@Path("/reviews")
+	public ReviewRepresentation deleteReview(ReviewRequest rReq) {
+		System.out.println("Delete METHOD Request from Client to Delete Review");
+		ReviewActivity rActivity = new ReviewActivity();
+		return rActivity.deleteReview(rReq);
+	}
+	
+	
 	}
 	
 	}
