@@ -24,24 +24,24 @@ public class PaymentDAL {
 		return payment;
 	}
 	
-	public List<Payment> getAllPayments() {
+	public List<Payment> getAllPayments(int offset, int limit) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    Query query = session.createQuery("from Payment");
+	    Query query = session.createQuery("from Payment").setFirstResult(offset).setMaxResults(limit);
 	    List<Payment> payments = query.list();
 	    
 		session.close();
 		return payments;
 	}
 	
-	public List<Payment> getAllPaymentsForCustomer(int custID) {
+	public List<Payment> getAllPaymentsForCustomer(int custID, int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Payment where customer_id=:custID").setParameter("custID", custID);
+	    Query query = session.createQuery("from Payment where customer_id=:custID").setParameter("custID", custID).setFirstResult(offset).setMaxResults(limit);
 	    List<Payment> payments = query.list();
 	    
 		session.close();
@@ -49,12 +49,13 @@ public class PaymentDAL {
 	}
 	
 	
-	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, Address billingAddress) {	
+	public Payment addPayment(int custID, int cardNumber, int securityCode, String expirationDate, int billingAddressID) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
-	    Customer customer = session.get(Customer.class, custID);   
-	    Payment Pay = new Payment(customer, cardNumber, securityCode, expirationDate, billingAddress);
+	    Customer customer = session.get(Customer.class, custID);  
+	    Address address = session.get(Address.class, billingAddressID);   
+	    Payment Pay = new Payment(customer, cardNumber, securityCode, expirationDate, address);
 	    
 	    Transaction tx = session.beginTransaction();
 	    session.save(Pay);
@@ -133,14 +134,15 @@ public class PaymentDAL {
 	    return payment;
 	}
 	
-	public Payment updatePaymentBillingAddress(Address billingAddress, int id) {
+public Payment updatePaymentAddress(int addressID, int id) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 	    Payment payment = session.get(Payment.class, id);
+	    Address address = session.get(Address.class, addressID);
 	    if (payment != null) {
-	    	payment.setBillingAddress(billingAddress);
+	    	payment.setbillingAddress(address);
 	    	Transaction tx = session.beginTransaction();
 	    	session.save(payment);
 		    tx.commit();

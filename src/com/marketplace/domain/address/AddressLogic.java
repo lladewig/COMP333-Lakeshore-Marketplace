@@ -11,9 +11,9 @@ public class AddressLogic {
 		return ad.getAddressByID(addressID);
 	}
 	
-	public List<Address> getAllAddressForCustomer(int custID){
+	public List<Address> getAllAddress(int offset, int limit){
 		AddressDAL ad = new AddressDAL();
-		return ad.getAllAddressForCustomer(custID);
+		return ad.getAllAddress(offset, limit);
 	}
 
 	public Address addAddress(int custID, String streetAddress, String unitNumber, int zipCode, String city, String state) {

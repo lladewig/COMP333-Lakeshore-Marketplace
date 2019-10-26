@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:jaxws="http://cxf.apache.org/jaxws"
+      xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans
+							http://www.springframework.org/schema/beans/spring-beans.xsd
+							http://cxf.apache.org/jaxws
+ 							http://cxf.apache.org/schemas/jaxws.xsd
+ 							http://cxf.apache.org/jaxrs
+ 							http://cxf.apache.org/schemas/jaxrs.xsd">
+  <import resource="classpath:META-INF/cxf/cxf.xml" />
+  <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+      	
+  <jaxrs:server name="LakeshoreMarketplace" address="http://localhost:8081">
+		<jaxrs:serviceBeans>
+			<ref bean="customerServiceRest" />
+			<ref bean="partnerServiceRest" />
+			<ref bean="addressServiceRest" />
+			<ref bean="paymentServiceRest" />
+		</jaxrs:serviceBeans>
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.marketplace.service.customer.CustomerResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.customer.CustomerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.partner.PartnerResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.partner.PartnerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.address.AddressResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.address.AddressRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.payment.PaymentResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.payment.PaymentRequest</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+  	<bean id="customerServiceRest" class="com.marketplace.service.customer.CustomerResource" />
+  	<bean id="partnerServiceRest" class="com.marketplace.service.partner.PartnerResource" />
+  	<bean id="addressServiceRest" class="com.marketplace.service.address.AddressResource" />
+  	<bean id="paymentServiceRest" class="com.marketplace.service.payment.PaymentResource" />
+  
+</beans>

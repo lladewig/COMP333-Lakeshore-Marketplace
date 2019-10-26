@@ -13,10 +13,10 @@ public class CustomerLogic {
 		return customer;
 	}
 	
-	public List<Customer> getAllCustomers() {
+	public List<Customer> getAllCustomers(int offset, int limit) {
 		CustomerDAL cd = new CustomerDAL();
 		List<Customer> customers = new ArrayList<Customer>();
-		customers = cd.getAllCustomers();
+		customers = cd.getAllCustomers(offset, limit);
 		return customers;
 	}
 	
