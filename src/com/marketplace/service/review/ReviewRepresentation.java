@@ -55,6 +55,6 @@ public class ReviewRepresentation  {
 		return reviewBody;
 	}
 	public void setReviewBody(String reviewBody) {
-		this.reviewbody = reviewBody;
+		this.reviewBody = reviewBody;
 	}
 }
