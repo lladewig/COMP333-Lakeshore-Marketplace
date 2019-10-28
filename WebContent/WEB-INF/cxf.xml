@@ -29,6 +29,10 @@
 			<jaxrs:schemaLocation>com.marketplace.service.address.AddressRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.marketplace.service.payment.PaymentResponse</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.marketplace.service.payment.PaymentRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.payment.ProductResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.payment.ProductRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.payment.OrderResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.payment.OrderRequest</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
@@ -36,5 +40,6 @@
   	<bean id="partnerServiceRest" class="com.marketplace.service.partner.PartnerResource" />
   	<bean id="addressServiceRest" class="com.marketplace.service.address.AddressResource" />
   	<bean id="paymentServiceRest" class="com.marketplace.service.payment.PaymentResource" />
-  
+ 	<bean id="productServiceRest" class="com.marketplace.service.product.ProductResource" />
+ 	<bean id="orderServiceRest" class="com.marketplace.service.order.OrderResource" />
 </beans>
