@@ -48,5 +48,5 @@ public class ReviewRequest  {
 		return reviewBody;
 	}
 	public void setReviewBody(String reviewBody) {
-		this.reviewbody = reviewBody;
+		this.reviewBody = reviewBody;
 	}}

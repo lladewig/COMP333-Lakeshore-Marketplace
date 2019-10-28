@@ -29,10 +29,12 @@
 			<jaxrs:schemaLocation>com.marketplace.service.address.AddressRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.marketplace.service.payment.PaymentResponse</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.marketplace.service.payment.PaymentRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.marketplace.service.payment.ProductResponse</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.marketplace.service.payment.ProductRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.marketplace.service.payment.OrderResponse</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.marketplace.service.payment.OrderRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.product.ProductResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.product.ProductRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.order.OrderResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.order.OrderRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.review.ReviewResponse</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.marketplace.service.review.ReviewRequest</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
@@ -42,4 +44,5 @@
   	<bean id="paymentServiceRest" class="com.marketplace.service.payment.PaymentResource" />
  	<bean id="productServiceRest" class="com.marketplace.service.product.ProductResource" />
  	<bean id="orderServiceRest" class="com.marketplace.service.order.OrderResource" />
+ 	<bean id="reviewServiceRest" class="com.marketplace.service.review.ReviewResource" />
 </beans>
