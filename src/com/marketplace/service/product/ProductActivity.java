@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.marketplace.domain.product.Product;
 import com.marketplace.domain.product.ProductLogic;
+import com.marketplace.service.partner.PartnerRepresentation;
 
 public class ProductActivity {
 	
@@ -14,8 +15,15 @@ public class ProductActivity {
 		Product product = aLogic.getProductByID(productID);
 		
 		ProductRepresentation aRes = new ProductRepresentation();
+		PartnerRepresentation pRes = new PartnerRepresentation();
+		
+		pRes.setPartnerID(product.getpartner().getpartnerID());
+		pRes.setPartnerName(product.getpartner().getpartnerName());
+		pRes.setPartnerType(product.getpartner().getpartnerType());
+		pRes.setPartnerDetails(product.getpartner().getpartnerDetails());
+		
 		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
+		aRes.setPartner(pRes);
 		aRes.setProductName(product.getproductName());
 		aRes.setProductDescription(product.getproductDescription());
 		aRes.setProductCost(product.getproductCost());
@@ -33,8 +41,15 @@ public class ProductActivity {
           Product product = (Product)it.next();
           
         ProductRepresentation aRes = new ProductRepresentation();
+        PartnerRepresentation pRes = new PartnerRepresentation();
+		
+		pRes.setPartnerID(product.getpartner().getpartnerID());
+		pRes.setPartnerName(product.getpartner().getpartnerName());
+		pRes.setPartnerType(product.getpartner().getpartnerType());
+		pRes.setPartnerDetails(product.getpartner().getpartnerDetails());
+        
 		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
+		aRes.setPartner(pRes);
 		aRes.setProductName(product.getproductName());
 		aRes.setProductDescription(product.getproductDescription());
 		aRes.setProductCost(product.getproductCost());
@@ -49,8 +64,16 @@ public class ProductActivity {
 		Product product = aLogic.addProduct(aReq.getpartner(), aReq.getProductName(), aReq.getproductDescription(), aReq.getproductCost());
 		
 		ProductRepresentation aRes = new ProductRepresentation();
+		PartnerRepresentation pRes = new PartnerRepresentation();
+		
+		pRes.setPartnerID(product.getpartner().getpartnerID());
+		pRes.setPartnerName(product.getpartner().getpartnerName());
+		pRes.setPartnerType(product.getpartner().getpartnerType());
+		pRes.setPartnerDetails(product.getpartner().getpartnerDetails());
+		
+		
 		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
+		aRes.setPartner(pRes);
 		aRes.setProductName(product.getproductName());
 		aRes.setProductDescription(product.getproductDescription());
 		aRes.setProductCost(product.getproductCost());
@@ -62,8 +85,15 @@ public class ProductActivity {
 		Product product = aLogic.deleteProduct(productID);
 		
 		ProductRepresentation aRes = new ProductRepresentation();
+		PartnerRepresentation pRes = new PartnerRepresentation();
+		
+		pRes.setPartnerID(product.getpartner().getpartnerID());
+		pRes.setPartnerName(product.getpartner().getpartnerName());
+		pRes.setPartnerType(product.getpartner().getpartnerType());
+		pRes.setPartnerDetails(product.getpartner().getpartnerDetails());	
+		
 		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
+		aRes.setPartner(pRes);
 		aRes.setProductName(product.getproductName());
 		aRes.setProductDescription(product.getproductDescription());
 		aRes.setProductCost(product.getproductCost());

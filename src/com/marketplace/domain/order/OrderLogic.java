@@ -13,9 +13,14 @@ public class OrderLogic {
 		return od.getOrderByID(orderID);
 	}	
 	
-	public List<Order> getAllOrdersForCustomer(int custID){
+	public List<Order> getAllOrders(int offset, int limit){
 		OrderDAL od = new OrderDAL();
-		return od.getAllOrdersForCustomer(custID);
+		return od.getAllOrders(offset, limit);
+	}
+	
+	public List<Order> getAllOrdersForCustomer(int custID, int offset, int limit){
+		OrderDAL od = new OrderDAL();
+		return od.getAllOrdersForCustomer(custID, offset, limit);
 	}
 	
 	public Order updateOrderStatus(String reviewStatus, int id) {

@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.product.ProductRepresentation;
+
 @XmlRootElement(name = "ReviewRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
@@ -13,8 +16,8 @@ public class ReviewRequest  {
 	
 	private int reviewID;
 	private int reviewScore;
-	private Customer customer;
-	private Product product;
+	private CustomerRepresentation customer;
+	private ProductRepresentation product;
 	private String reviewBody;
 	
 	public ReviewRequest() {}
@@ -32,16 +35,16 @@ public class ReviewRequest  {
 	public void setReviewScore(int reviewScore) {
 		this.reviewScore = reviewScore;
 	}
-	public String getCustomer() {
+	public CustomerRepresentation getCustomer() {
 		return customer;
 	}
-	public void setCustomer(String customer) {
+	public void setCustomer(CustomerRepresentation customer) {
 		this.customer = customer;
 	}
-	public String getProduct() {
+	public ProductRepresentation getProduct() {
 		return product;
 	}
-	public void setProdcut(String product) {
+	public void setProdcut(ProductRepresentation product) {
 		this.product = product;
 	}
 	public String getReviewBody() {

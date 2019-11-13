@@ -29,26 +29,26 @@ public class OrderDAL {
 		return order;
 	}
 	
-	public List<Order> getAllOrders() {
+	public List<Order> getAllOrders(int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Order");
+	    Query query = session.createQuery("from Order").setFirstResult(offset).setMaxResults(limit);
 	    List<Order> orders = query.list();
 	    
 		session.close();
 		return orders;
 	}
 	
-	public List<Order> getAllOrdersForCustomer(int custID) {
+	public List<Order> getAllOrdersForCustomer(int custID, int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Order where customer_id=:custID").setParameter("custID", custID);
+	    Query query = session.createQuery("from Order where customer_id=:custID").setParameter("custID", custID).setFirstResult(offset).setMaxResults(limit);
 	    List<Order> orders = query.list();
 	    
 		session.close();

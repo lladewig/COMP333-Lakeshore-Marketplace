@@ -27,13 +27,25 @@ public class OrderResource {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/orders")
-	public List<OrderRepresentation> getAllOrders(@QueryParam("offset") int offset, @QueryParam("limit") int limit){
+	public List<OrderRepresentation> getAllOrders(@QueryParam("custID") int custID, @QueryParam("offset") int offset, @QueryParam("limit") int limit){
 		if (limit == 0) {
 			limit = 5;
 		}
 		System.out.println("GET METHOD Request from Client for Get All Orders with offset " + offset + " and limit " + limit);
 		OrderActivity addActivity = new OrderActivity();
 		return addActivity.getAllOrders(offset, limit);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/orders")
+	public List<OrderRepresentation> getAllOrdersForCustomer(@QueryParam("custID") int custID, @QueryParam("offset") int offset, @QueryParam("limit") int limit){
+		if (limit == 0) {
+			limit = 5;
+		}
+		System.out.println("GET METHOD Request from Client for Get All Orders with offset " + offset + " and limit " + limit);
+		OrderActivity addActivity = new OrderActivity();
+		return addActivity.getAllOrdersForCustomer(custID, offset, limit);
 	}
 	
 	@POST

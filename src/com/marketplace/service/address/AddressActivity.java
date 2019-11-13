@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.marketplace.domain.address.Address;
 import com.marketplace.domain.address.AddressLogic;
+import com.marketplace.service.customer.CustomerRepresentation;
 
 public class AddressActivity {
 	
@@ -14,8 +15,14 @@ public class AddressActivity {
 		Address address = aLogic.getAddressByID(addressID);
 		
 		AddressRepresentation aRes = new AddressRepresentation();
+
+		CustomerRepresentation cRes = new CustomerRepresentation();
+		cRes.setCustomerID(address.getcustomer().getcustomerID());
+		cRes.setFirstName(address.getcustomer().getfirstName());
+		cRes.setLastName(address.getcustomer().getlastName());
+		
 		aRes.setAddressID(address.getaddressID());
-		aRes.setCustomer(address.getcustomer());
+		aRes.setCustomer(cRes);
 		aRes.setStreetAddress(address.getstreetAddress());
 		aRes.setUnitNUmber(address.getunitNumber());
 		aRes.setZipCode(address.getzipCode());
@@ -35,8 +42,14 @@ public class AddressActivity {
           Address address = (Address)it.next();
           
         AddressRepresentation aRes = new AddressRepresentation();
+		CustomerRepresentation cRes = new CustomerRepresentation();
+		
+		cRes.setCustomerID(address.getcustomer().getcustomerID());
+		cRes.setFirstName(address.getcustomer().getfirstName());
+		cRes.setLastName(address.getcustomer().getlastName());
+		
   		aRes.setAddressID(address.getaddressID());
-  		aRes.setCustomer(address.getcustomer());
+  		aRes.setCustomer(cRes);
   		aRes.setStreetAddress(address.getstreetAddress());
   		aRes.setUnitNUmber(address.getunitNumber());
   		aRes.setZipCode(address.getzipCode());
@@ -53,8 +66,14 @@ public class AddressActivity {
 		Address address = aLogic.addAddress(aReq.getCustomerID(), aReq.getStreetAddress(), aReq.getUnitNumber(), aReq.getZipCode(), aReq.getCity(), aReq.getState());
 		
 		AddressRepresentation aRes = new AddressRepresentation();
+
+		CustomerRepresentation cRes = new CustomerRepresentation();
+		cRes.setCustomerID(address.getcustomer().getcustomerID());
+		cRes.setFirstName(address.getcustomer().getfirstName());
+		cRes.setLastName(address.getcustomer().getlastName());
+		
 		aRes.setAddressID(address.getaddressID());
-		aRes.setCustomer(address.getcustomer());
+		aRes.setCustomer(cRes);
 		aRes.setStreetAddress(address.getstreetAddress());
 		aRes.setUnitNUmber(address.getunitNumber());
 		aRes.setZipCode(address.getzipCode());
@@ -68,8 +87,14 @@ public class AddressActivity {
 		Address address = aLogic.deleteAddress(addressID);
 		
 		AddressRepresentation aRes = new AddressRepresentation();
+		
+		CustomerRepresentation cRes = new CustomerRepresentation();
+		cRes.setCustomerID(address.getcustomer().getcustomerID());
+		cRes.setFirstName(address.getcustomer().getfirstName());
+		cRes.setLastName(address.getcustomer().getlastName());
+		
 		aRes.setAddressID(address.getaddressID());
-		aRes.setCustomer(address.getcustomer());
+		aRes.setCustomer(cRes);
 		aRes.setStreetAddress(address.getstreetAddress());
 		aRes.setUnitNUmber(address.getunitNumber());
 		aRes.setZipCode(address.getzipCode());

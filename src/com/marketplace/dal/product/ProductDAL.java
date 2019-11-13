@@ -26,12 +26,12 @@ public class ProductDAL {
 		return product;
 	}
 	
-	public List<Product> getAllProducts() {
+	public List<Product> getAllProducts(int offset, int limit) {
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Product");
+	    Query query = session.createQuery("from Product").setFirstResult(offset).setMaxResults(limit);
 	    List<Product> products = query.list();
 	    
 		session.close();

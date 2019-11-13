@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.marketplace.domain.customer.Customer;
+import com.marketplace.service.customer.CustomerRepresentation;
 
 @XmlRootElement(name = "Address")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,14 +15,14 @@ public class AddressRepresentation {
 
 	
 	private int addressID;
-	private Customer customer;
+	private CustomerRepresentation customer;
 	private String streetAddress;
 	private String unitNumber;
 	private int zipCode;
 	private String city;
 	private String state;
 	
-	AddressRepresentation(){
+	public AddressRepresentation(){
 		
 	}
 	
@@ -33,11 +34,11 @@ public class AddressRepresentation {
 		this.addressID = addressID;
 	}
 	
-	public Customer getCustomer() {
+	public CustomerRepresentation getCustomer() {
 		return customer;
 	}
 	
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerRepresentation customer) {
 		this.customer = customer;
 	}
 	

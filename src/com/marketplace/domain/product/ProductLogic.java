@@ -7,14 +7,14 @@ import com.marketplace.domain.partner.Partner;
 
 public class ProductLogic {
 	
-	public static Product getProductByID(int id) {
+	public Product getProductByID(int id) {
 		ProductDAL pd = new ProductDAL();
 		return pd.getProductByID(id);
 	}
 	
-	public List<Product> getAllProducts() {
+	public List<Product> getAllProducts(int offset, int limit) {
 		ProductDAL pd = new ProductDAL();
-		return pd.getAllProducts();
+		return pd.getAllProducts(offset, limit);
 	}
 	
 	public List<Product> getAllProductsByPartner(int partnerID){
