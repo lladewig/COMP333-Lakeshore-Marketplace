@@ -17,32 +17,7 @@ public class ReviewActivity  {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.getReviewByID(reviewID);
 		
-		ReviewRepresentation rRes = new ReviewRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		ProductRepresentation prodRes = new ProductRepresentation();
-		PartnerRepresentation parRes = new PartnerRepresentation();
-		
-		parRes.setPartnerID(review.getproduct().getpartner().getpartnerID());
-		parRes.setPartnerName(review.getproduct().getpartner().getpartnerName());
-		parRes.setPartnerType(review.getproduct().getpartner().getpartnerType());
-		parRes.setPartnerDetails(review.getproduct().getpartner().getpartnerDetails());
-		
-		cRes.setCustomerID(review.getcustomer().getcustomerID());
-		cRes.setFirstName(review.getcustomer().getfirstName());
-		cRes.setLastName(review.getcustomer().getlastName());
-		cRes.setPhoneNumber(review.getcustomer().getphoneNumber());
-		
-		prodRes.setProductID(review.getproduct().getproductID());
-		prodRes.setProductName(review.getproduct().getproductName());
-		prodRes.setPartner(parRes);
-		prodRes.setProductCost(review.getproduct().getproductCost());
-		prodRes.setProductDescription(review.getproduct().getproductDescription());
-		
-		rRes.setReviewID(review.getreviewID());
-		rRes.setCustomer(cRes);
-		rRes.setProduct(prodRes);
-		rRes.setReviewScore(review.getReviewScore());
-		rRes.setReviewBody(review.getReviewBody());	
+		ReviewRepresentation rRes = buildResponse(review);
 		return rRes;
 	}
 	
@@ -56,43 +31,29 @@ public class ReviewActivity  {
 		while(it.hasNext()) {
 	          Review review = (Review)it.next();
 	          
-	          ReviewRepresentation rRes = new ReviewRepresentation();
-	          CustomerRepresentation cRes = new CustomerRepresentation();
-		  		ProductRepresentation pRes = new ProductRepresentation();
-				PartnerRepresentation parRes = new PartnerRepresentation();
-				
-				parRes.setPartnerID(review.getproduct().getpartner().getpartnerID());
-				parRes.setPartnerName(review.getproduct().getpartner().getpartnerName());
-				parRes.setPartnerType(review.getproduct().getpartner().getpartnerType());
-				parRes.setPartnerDetails(review.getproduct().getpartner().getpartnerDetails());
-		  		
-		  		cRes.setCustomerID(review.getcustomer().getcustomerID());
-		  		cRes.setFirstName(review.getcustomer().getfirstName());
-		  		cRes.setLastName(review.getcustomer().getlastName());
-		  		cRes.setPhoneNumber(review.getcustomer().getphoneNumber());
-		  		
-		  		pRes.setProductID(review.getproduct().getproductID());
-		  		pRes.setProductName(review.getproduct().getproductName());
-		  		pRes.setPartner(parRes);
-		  		pRes.setProductCost(review.getproduct().getproductCost());
-		  		pRes.setProductDescription(review.getproduct().getproductDescription());
-	  		
-	  		  rRes.setReviewID(review.getreviewID());
-	  		  rRes.setCustomer(cRes);
-	  		  rRes.setProduct(pRes);
-	  		  rRes.setReviewScore(review.getReviewScore());
-	  		  rRes.setReviewBody(review.getReviewBody());	
-  	
-          
-          rResponses.add(rRes);
+	          ReviewRepresentation rRes = buildResponse(review);
+	          rResponses.add(rRes);
         }
 		return rResponses;
 	}
 	
 	public ReviewRepresentation addReview(ReviewRequest rReq) {
 		ReviewLogic rLogic = new ReviewLogic();
-		Review review = rLogic.addReview(rReq.getCustomer().getCustomerID(), rReq.getReviewScore(), rReq.getProduct().getProductID(), rReq.getReviewBody());
+		Review review = rLogic.addReview(rReq.getCustomerID(), rReq.getReviewScore(), rReq.getProductID(), rReq.getReviewBody());
 		
+		ReviewRepresentation rRes = buildResponse(review);
+		return rRes;
+	}
+	
+	public ReviewRepresentation deleteReview(int reviewID) {
+		ReviewLogic rLogic = new ReviewLogic();
+		Review review = rLogic.deleteReview(reviewID);
+		
+		ReviewRepresentation rRes = buildResponse(review);
+		return rRes;
+	}
+	
+	private ReviewRepresentation buildResponse(Review review) {
 		ReviewRepresentation rRes = new ReviewRepresentation();
 		CustomerRepresentation cRes = new CustomerRepresentation();
 		ProductRepresentation pRes = new ProductRepresentation();
@@ -115,39 +76,6 @@ public class ReviewActivity  {
 		pRes.setProductDescription(review.getproduct().getproductDescription());
 		
 		rRes.setReviewID(review.getreviewID());
-		rRes.setCustomer(cRes);
-		rRes.setProduct(pRes);
-		rRes.setReviewScore(review.getReviewScore());
-		rRes.setReviewBody(review.getReviewBody());	
-		return rRes;
-	}
-	
-	public ReviewRepresentation deleteReview(int reviewID) {
-		ReviewLogic rLogic = new ReviewLogic();
-		Review review = rLogic.deleteReview(reviewID);
-		
-		ReviewRepresentation rRes = new ReviewRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		ProductRepresentation pRes = new ProductRepresentation();
-		PartnerRepresentation parRes = new PartnerRepresentation();
-		
-		parRes.setPartnerID(review.getproduct().getpartner().getpartnerID());
-		parRes.setPartnerName(review.getproduct().getpartner().getpartnerName());
-		parRes.setPartnerType(review.getproduct().getpartner().getpartnerType());
-		parRes.setPartnerDetails(review.getproduct().getpartner().getpartnerDetails());
-		
-		cRes.setCustomerID(review.getcustomer().getcustomerID());
-		cRes.setFirstName(review.getcustomer().getfirstName());
-		cRes.setLastName(review.getcustomer().getlastName());
-		cRes.setPhoneNumber(review.getcustomer().getphoneNumber());
-		
-		pRes.setProductID(review.getproduct().getproductID());
-		pRes.setProductName(review.getproduct().getproductName());
-		pRes.setPartner(parRes);
-		pRes.setProductCost(review.getproduct().getproductCost());
-		pRes.setProductDescription(review.getproduct().getproductDescription());
-		
-		rRes.setReviewID(reviewID);
 		rRes.setCustomer(cRes);
 		rRes.setProduct(pRes);
 		rRes.setReviewScore(review.getReviewScore());

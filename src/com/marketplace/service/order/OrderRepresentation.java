@@ -14,7 +14,7 @@ import com.marketplace.service.customer.CustomerRepresentation;
 import com.marketplace.service.payment.PaymentRepresentation;
 import com.marketplace.service.product.ProductRepresentation;
 
-@XmlRootElement(name = "Product")
+@XmlRootElement(name = "Order")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class OrderRepresentation {

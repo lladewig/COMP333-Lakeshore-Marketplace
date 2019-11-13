@@ -13,11 +13,7 @@ public class PartnerActivity {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.getPartnerByID(partnerID);
 		
-		PartnerRepresentation pRes = new PartnerRepresentation();
-		pRes.setPartnerID(partner.getpartnerID());
-		pRes.setPartnerName(partner.getpartnerName());
-		pRes.setPartnerType(partner.getpartnerType());
-		pRes.setPartnerDetails(partner.getpartnerDetails());
+		PartnerRepresentation pRes = buildResponse(partner);
 		return pRes;
 	}
 	
@@ -31,11 +27,7 @@ public class PartnerActivity {
 		while(it.hasNext()) {
           Partner partner = (Partner)it.next();
           
-          PartnerRepresentation pRes = new PartnerRepresentation();
-          pRes.setPartnerID(partner.getpartnerID());
-          pRes.setPartnerName(partner.getpartnerName());
-          pRes.setPartnerType(partner.getpartnerType());
-          pRes.setPartnerDetails(partner.getpartnerDetails());
+          PartnerRepresentation pRes = buildResponse(partner);
           pResponses.add(pRes);
         }
 		return pResponses;		
@@ -45,11 +37,7 @@ public class PartnerActivity {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.addPartner(pReq.getPartnerName(), pReq.getPartnerType(), pReq.getPartnerDetails());
 		
-		PartnerRepresentation pRes = new PartnerRepresentation();
-		pRes.setPartnerID(partner.getpartnerID());
-		pRes.setPartnerName(partner.getpartnerName());
-		pRes.setPartnerType(partner.getpartnerType());
-		pRes.setPartnerDetails(partner.getpartnerDetails());
+		PartnerRepresentation pRes = buildResponse(partner);
 		return pRes;
 	}
 	
@@ -57,11 +45,7 @@ public class PartnerActivity {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.deletePartner(partnerID);
 		
-		PartnerRepresentation pRes = new PartnerRepresentation();
-		pRes.setPartnerID(partner.getpartnerID());
-		pRes.setPartnerName(partner.getpartnerName());
-		pRes.setPartnerType(partner.getpartnerType());
-		pRes.setPartnerDetails(partner.getpartnerDetails());
+		PartnerRepresentation pRes = buildResponse(partner);
 		return pRes;
 	}
 	
@@ -69,11 +53,7 @@ public class PartnerActivity {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.updatePartnerName(pReq.getPartnerID(), pReq.getPartnerName());
 		
-		PartnerRepresentation pRes = new PartnerRepresentation();
-		pRes.setPartnerID(partner.getpartnerID());
-		pRes.setPartnerName(partner.getpartnerName());
-		pRes.setPartnerType(partner.getpartnerType());
-		pRes.setPartnerDetails(partner.getpartnerDetails());
+		PartnerRepresentation pRes = buildResponse(partner);
 		return pRes;
 	}
 	
@@ -81,6 +61,11 @@ public class PartnerActivity {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.updatePartnerDetails(pReq.getPartnerID(), pReq.getPartnerDetails());
 		
+		PartnerRepresentation pRes = buildResponse(partner);
+		return pRes;
+	}
+	
+	private PartnerRepresentation buildResponse(Partner partner) {
 		PartnerRepresentation pRes = new PartnerRepresentation();
 		pRes.setPartnerID(partner.getpartnerID());
 		pRes.setPartnerName(partner.getpartnerName());

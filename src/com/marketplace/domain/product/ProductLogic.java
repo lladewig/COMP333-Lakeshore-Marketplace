@@ -22,9 +22,9 @@ public class ProductLogic {
 		return pd.getAllProductsByPartner(partnerID);
 	}
 	
-	public Product addProduct(Partner partner, String productName, String productDescription, double cost) {
+	public Product addProduct(int partnerID, String productName, String productDescription, double cost) {
 		ProductDAL pd = new ProductDAL();
-	    return pd.addProduct(partner, productName, productDescription, cost);
+	    return pd.addProduct(partnerID, productName, productDescription, cost);
 	}
 	
 	public Product deleteProduct(int id){

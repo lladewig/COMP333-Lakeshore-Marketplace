@@ -5,20 +5,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.marketplace.domain.partner.Partner;
-
-@XmlRootElement(name = "AddressRequest")
+@XmlRootElement(name = "ProductRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class ProductRequest {
 	
 	private int productID;
-	private Partner partner;
+	private int partnerID;
 	private String productName;
 	private String productDescription;
 	private double productCost;
 	
-	ProductRequest(){
+	public ProductRequest(){
 		
 	}
 	
@@ -26,12 +24,12 @@ public class ProductRequest {
 		return productID;
 	}
 
-	public Partner getpartner() {
-		return partner;
+	public int getPartnerID() {
+		return partnerID;
 	}
 	
-	public void setpartner(Partner partner) {
-		this.partner = partner;
+	public void setPartnerID(int partnerID) {
+		this.partnerID = partnerID;
 	}
 	
 	public String getProductName() {

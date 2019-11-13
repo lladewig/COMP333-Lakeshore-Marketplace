@@ -15,28 +15,7 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.getPayment(paymentID);
 		
-		PaymentRepresentation pRes = new PaymentRepresentation();
-		AddressRepresentation aRes = new AddressRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		
-		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-		cRes.setFirstName(payment.getcustomer().getfirstName());
-		cRes.setLastName(payment.getcustomer().getlastName());
-		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-		
-		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-		aRes.setCity(payment.getbillingAddress().getcity());
-		aRes.setCustomer(cRes);
-		aRes.setState(payment.getbillingAddress().getstate());
-		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		
-		pRes.setPaymentID(payment.getpaymentID());
-		pRes.setCardNumber(payment.getcardNumber());
-		pRes.setSecurityCode(payment.getsecurityCode());
-		pRes.setExpirationDate(payment.getexpirationDate());
-		pRes.setAddress(aRes);	
+		PaymentRepresentation pRes = buildResponse(payment);
 		return pRes;
 	}
 	
@@ -50,28 +29,7 @@ public class PaymentActivity {
 		while(it.hasNext()) {
 			Payment payment = (Payment)it.next();
 		  
-		  	PaymentRepresentation pRes = new PaymentRepresentation();
-		  	AddressRepresentation aRes = new AddressRepresentation();
-			CustomerRepresentation cRes = new CustomerRepresentation();
-			
-			cRes.setCustomerID(payment.getcustomer().getcustomerID());
-			cRes.setFirstName(payment.getcustomer().getfirstName());
-			cRes.setLastName(payment.getcustomer().getlastName());
-			cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-			
-			aRes.setAddressID(payment.getbillingAddress().getaddressID());
-			aRes.setCity(payment.getbillingAddress().getcity());
-			aRes.setCustomer(cRes);
-			aRes.setState(payment.getbillingAddress().getstate());
-			aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-			aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-			aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		  	
-		  	pRes.setPaymentID(payment.getpaymentID());
-			pRes.setCardNumber(payment.getcardNumber());
-			pRes.setSecurityCode(payment.getsecurityCode());
-			pRes.setExpirationDate(payment.getexpirationDate());
-			pRes.setAddress(aRes);
+			PaymentRepresentation pRes = buildResponse(payment);
 			pResponses.add(pRes);
         }
 		return pResponses;
@@ -88,28 +46,7 @@ public class PaymentActivity {
 		while(it.hasNext()) {
           Payment payment = (Payment)it.next();
           
-          	PaymentRepresentation pRes = new PaymentRepresentation();
-          	AddressRepresentation aRes = new AddressRepresentation();
-    		CustomerRepresentation cRes = new CustomerRepresentation();
-    		
-    		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-    		cRes.setFirstName(payment.getcustomer().getfirstName());
-    		cRes.setLastName(payment.getcustomer().getlastName());
-    		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-    		
-    		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-    		aRes.setCity(payment.getbillingAddress().getcity());
-    		aRes.setCustomer(cRes);
-    		aRes.setState(payment.getbillingAddress().getstate());
-    		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-    		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-    		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-          	
-          	pRes.setPaymentID(payment.getpaymentID());
-  			pRes.setCardNumber(payment.getcardNumber());
-  			pRes.setSecurityCode(payment.getsecurityCode());
-  			pRes.setExpirationDate(payment.getexpirationDate());
-  			pRes.setAddress(aRes);
+          PaymentRepresentation pRes = buildResponse(payment);
   			pResponses.add(pRes);
         }
 		return pResponses;
@@ -119,28 +56,7 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.addPayment(pReq.getCustomerID(), pReq.getCardNumber(), pReq.getSecurityCode(), pReq.getExpirationDate(), pReq.getAddressID());
 		
-		PaymentRepresentation pRes = new PaymentRepresentation();
-		AddressRepresentation aRes = new AddressRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		
-		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-		cRes.setFirstName(payment.getcustomer().getfirstName());
-		cRes.setLastName(payment.getcustomer().getlastName());
-		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-		
-		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-		aRes.setCity(payment.getbillingAddress().getcity());
-		aRes.setCustomer(cRes);
-		aRes.setState(payment.getbillingAddress().getstate());
-		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		
-		pRes.setPaymentID(payment.getpaymentID());
-		pRes.setCardNumber(payment.getcardNumber());
-		pRes.setSecurityCode(payment.getsecurityCode());
-		pRes.setExpirationDate(payment.getexpirationDate());
-		pRes.setAddress(aRes);	
+		PaymentRepresentation pRes = buildResponse(payment);
 		return pRes;
 	}
 	
@@ -148,28 +64,7 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.deletePayment(paymentID);
 		
-		PaymentRepresentation pRes = new PaymentRepresentation();
-		AddressRepresentation aRes = new AddressRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		
-		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-		cRes.setFirstName(payment.getcustomer().getfirstName());
-		cRes.setLastName(payment.getcustomer().getlastName());
-		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-		
-		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-		aRes.setCity(payment.getbillingAddress().getcity());
-		aRes.setCustomer(cRes);
-		aRes.setState(payment.getbillingAddress().getstate());
-		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		
-		pRes.setPaymentID(payment.getpaymentID());
-		pRes.setCardNumber(payment.getcardNumber());
-		pRes.setSecurityCode(payment.getsecurityCode());
-		pRes.setExpirationDate(payment.getexpirationDate());
-		pRes.setAddress(aRes);	
+		PaymentRepresentation pRes = buildResponse(payment);
 		return pRes;
 	}
 	
@@ -177,28 +72,7 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentCardNumber(pReq.getCardNumber(), pReq.getPaymentID());
 		
-		PaymentRepresentation pRes = new PaymentRepresentation();
-		AddressRepresentation aRes = new AddressRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		
-		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-		cRes.setFirstName(payment.getcustomer().getfirstName());
-		cRes.setLastName(payment.getcustomer().getlastName());
-		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-		
-		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-		aRes.setCity(payment.getbillingAddress().getcity());
-		aRes.setCustomer(cRes);
-		aRes.setState(payment.getbillingAddress().getstate());
-		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		
-		pRes.setPaymentID(payment.getpaymentID());
-		pRes.setCardNumber(payment.getcardNumber());
-		pRes.setSecurityCode(payment.getsecurityCode());
-		pRes.setExpirationDate(payment.getexpirationDate());
-		pRes.setAddress(aRes);	
+		PaymentRepresentation pRes = buildResponse(payment);
 		return pRes;
 	}
 
@@ -206,28 +80,7 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentSecurityCode(pReq.getSecurityCode(), pReq.getPaymentID());
 		
-		PaymentRepresentation pRes = new PaymentRepresentation();
-		AddressRepresentation aRes = new AddressRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		
-		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-		cRes.setFirstName(payment.getcustomer().getfirstName());
-		cRes.setLastName(payment.getcustomer().getlastName());
-		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-		
-		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-		aRes.setCity(payment.getbillingAddress().getcity());
-		aRes.setCustomer(cRes);
-		aRes.setState(payment.getbillingAddress().getstate());
-		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		
-		pRes.setPaymentID(payment.getpaymentID());
-		pRes.setCardNumber(payment.getcardNumber());
-		pRes.setSecurityCode(payment.getsecurityCode());
-		pRes.setExpirationDate(payment.getexpirationDate());
-		pRes.setAddress(aRes);	
+		PaymentRepresentation pRes = buildResponse(payment);
 		return pRes;
 	}
 	
@@ -235,28 +88,7 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentExpirationDate(pReq.getExpirationDate(), pReq.getPaymentID());
 		
-		PaymentRepresentation pRes = new PaymentRepresentation();
-		AddressRepresentation aRes = new AddressRepresentation();
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		
-		cRes.setCustomerID(payment.getcustomer().getcustomerID());
-		cRes.setFirstName(payment.getcustomer().getfirstName());
-		cRes.setLastName(payment.getcustomer().getlastName());
-		cRes.setPhoneNumber(payment.getcustomer().getphoneNumber());
-		
-		aRes.setAddressID(payment.getbillingAddress().getaddressID());
-		aRes.setCity(payment.getbillingAddress().getcity());
-		aRes.setCustomer(cRes);
-		aRes.setState(payment.getbillingAddress().getstate());
-		aRes.setStreetAddress(payment.getbillingAddress().getstreetAddress());
-		aRes.setUnitNUmber(payment.getbillingAddress().getunitNumber());
-		aRes.setZipCode(payment.getbillingAddress().getzipCode());
-		
-		pRes.setPaymentID(payment.getpaymentID());
-		pRes.setCardNumber(payment.getcardNumber());
-		pRes.setSecurityCode(payment.getsecurityCode());
-		pRes.setExpirationDate(payment.getexpirationDate());
-		pRes.setAddress(aRes);	
+		PaymentRepresentation pRes = buildResponse(payment);
 		return pRes;
 	}
 	
@@ -264,6 +96,11 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentAddress(pReq.getAddressID(), pReq.getPaymentID());
 		
+		PaymentRepresentation pRes = buildResponse(payment);
+		return pRes;
+	}
+	
+	private PaymentRepresentation buildResponse(Payment payment) {
 		PaymentRepresentation pRes = new PaymentRepresentation();
 		AddressRepresentation aRes = new AddressRepresentation();
 		CustomerRepresentation cRes = new CustomerRepresentation();

@@ -58,7 +58,7 @@ public class OrderActivity {
 	
 	public OrderRepresentation addOrder(OrderRequest aReq) {
 		OrderLogic oLogic = new OrderLogic();
-		Order order = oLogic.addOrder(aReq.getcustomer().getcustomerID(), aReq.getProduct().getproductID(), aReq.getPayment().getpaymentID(), aReq.getStatus(), aReq.getshipmentAddress());
+		Order order = oLogic.addOrder(aReq.getCustomerID(), aReq.getProductID(), aReq.getPaymentID(), aReq.getStatus(), aReq.getAddressID());
 		
 		OrderRepresentation oRes = buildResponse(order);
 		return oRes;

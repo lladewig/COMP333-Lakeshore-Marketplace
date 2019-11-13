@@ -50,10 +50,11 @@ public class ProductDAL {
 		return products;
 	}
 	
-	public Product addProduct(Partner partner, String productName, String productDescription, double cost) {	
+	public Product addProduct(int partnerID, String productName, String productDescription, double cost) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
+	    Partner partner = session.get(Partner.class, partnerID);
 	    Product product = new Product(partner, productName, productDescription, cost);
 	    
 	    Transaction tx = session.beginTransaction();

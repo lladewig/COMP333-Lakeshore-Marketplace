@@ -89,14 +89,15 @@ public class OrderDAL {
 	    return order;
 	}
 	
-	public Order addOrder(int custID, int paymentID, int productID, String status, Address shipmentAddress) {	
+	public Order addOrder(int custID, int paymentID, int productID, String status, int addressID) {	
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 	    Customer customer = session.get(Customer.class, custID);
 	    Payment payment = session.get(Payment.class, paymentID);
 	    Product product = session.get(Product.class, productID);
-	    Order order = new Order(customer, product, payment, status, shipmentAddress);
+	    Address address = session.get(Address.class, addressID);
+	    Order order = new Order(customer, product, payment, status, address);
 	    
 	    Transaction tx = session.beginTransaction();
 	    session.save(order);

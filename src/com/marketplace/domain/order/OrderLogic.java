@@ -35,12 +35,12 @@ public class OrderLogic {
 		return order;
 	}
 	
-	public Order addOrder(int custID, int paymentID, int productID, String status, Address shipmentAddress) {
+	public Order addOrder(int custID, int paymentID, int productID, String status, int addressID) {
 		OrderDAL od = new OrderDAL();
-		return od.addOrder(custID, paymentID, productID, status, shipmentAddress);
+		return od.addOrder(custID, paymentID, productID, status, addressID);
 	}
 	
-	public static Order deleteOrder(int orderID) {
+	public Order deleteOrder(int orderID) {
 		OrderDAL od = new OrderDAL();
 		return od.deleteOrder(orderID);
 	}

@@ -13,7 +13,6 @@ import com.marketplace.service.product.ProductRepresentation;
 @XmlRootElement(name = "Review")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-
 public class ReviewRepresentation  {
 	
 	

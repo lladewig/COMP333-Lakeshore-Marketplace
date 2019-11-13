@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.marketplace.domain.partner.Partner;
 import com.marketplace.service.partner.PartnerRepresentation;
 
 @XmlRootElement(name = "Product")
