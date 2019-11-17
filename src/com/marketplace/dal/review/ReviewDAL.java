@@ -28,26 +28,26 @@ public class ReviewDAL {
 		return review;
 	}
 	
-	public List<Review> getAllReviewForCustomer(int custID) {
+	public List<Review> getAllReviewForCustomer(int custID, int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Review where customer_id=:custID").setParameter("custID", custID);
+	    Query query = session.createQuery("from Review where customer_id=:custID").setParameter("custID", custID).setFirstResult(offset).setMaxResults(limit);
 	    List<Review> reviews = query.list();
 	    
 		session.close();
 		return reviews;
 	}
 	
-	public List<Review> getAllReviewForProduct(int productID) {
+	public List<Review> getAllReviewForProduct(int productID, int offset, int limit) {
 		
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Review where product_id=:productID").setParameter("productID", productID);
+	    Query query = session.createQuery("from Review where product_id=:productID").setParameter("productID", productID).setFirstResult(offset).setMaxResults(limit);
 	    List<Review> reviews = query.list();
 	    
 		session.close();

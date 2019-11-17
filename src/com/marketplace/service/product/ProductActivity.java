@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.marketplace.domain.product.Product;
 import com.marketplace.domain.product.ProductLogic;
+import com.marketplace.service.partner.PartnerRepresentation;
 
 public class ProductActivity {
 	
@@ -13,12 +14,7 @@ public class ProductActivity {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.getProductByID(productID);
 		
-		ProductRepresentation aRes = new ProductRepresentation();
-		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
-		aRes.setProductName(product.getproductName());
-		aRes.setProductDescription(product.getproductDescription());
-		aRes.setProductCost(product.getproductCost());
+		ProductRepresentation aRes = buildResponse(product);
 		return aRes;
 	}
 	
@@ -32,12 +28,7 @@ public class ProductActivity {
 		while(it.hasNext()) {
           Product product = (Product)it.next();
           
-        ProductRepresentation aRes = new ProductRepresentation();
-		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
-		aRes.setProductName(product.getproductName());
-		aRes.setProductDescription(product.getproductDescription());
-		aRes.setProductCost(product.getproductCost());
+          ProductRepresentation aRes = buildResponse(product);
         aResponses.add(aRes);
         }
 		
@@ -46,14 +37,9 @@ public class ProductActivity {
 	
 	public ProductRepresentation addProduct(ProductRequest aReq) {
 		ProductLogic aLogic = new ProductLogic();
-		Product product = aLogic.addProduct(aReq.getpartner(), aReq.getProductName(), aReq.getproductDescription(), aReq.getproductCost());
+		Product product = aLogic.addProduct(aReq.getPartnerID(), aReq.getProductName(), aReq.getproductDescription(), aReq.getproductCost());
 		
-		ProductRepresentation aRes = new ProductRepresentation();
-		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
-		aRes.setProductName(product.getproductName());
-		aRes.setProductDescription(product.getproductDescription());
-		aRes.setProductCost(product.getproductCost());
+		ProductRepresentation aRes = buildResponse(product);
 		return aRes;
 	}
 	
@@ -61,13 +47,26 @@ public class ProductActivity {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.deleteProduct(productID);
 		
+		ProductRepresentation aRes = buildResponse(product);
+		return aRes;
+	}
+
+	private ProductRepresentation buildResponse(Product product) {
 		ProductRepresentation aRes = new ProductRepresentation();
+		PartnerRepresentation pRes = new PartnerRepresentation();
+		
+		pRes.setPartnerID(product.getpartner().getpartnerID());
+		pRes.setPartnerName(product.getpartner().getpartnerName());
+		pRes.setPartnerType(product.getpartner().getpartnerType());
+		pRes.setPartnerDetails(product.getpartner().getpartnerDetails());	
+		
 		aRes.setProductID(product.getproductID());
-		aRes.setPartner(product.getpartner());
+		aRes.setPartner(pRes);
 		aRes.setProductName(product.getproductName());
 		aRes.setProductDescription(product.getproductDescription());
 		aRes.setProductCost(product.getproductCost());
 		return aRes;
 	}
-
+	
+	
 }

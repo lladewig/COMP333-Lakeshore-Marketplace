@@ -14,7 +14,7 @@ public class PartnerRequest {
 	private String partnerType;
 	private String partnerDetails;
 	
-	PartnerRequest(){
+	public PartnerRequest(){
 		
 	}
 

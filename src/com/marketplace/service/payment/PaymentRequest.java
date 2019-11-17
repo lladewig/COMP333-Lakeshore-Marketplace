@@ -17,7 +17,7 @@ public class PaymentRequest {
 	private String expirationDate;
 	private int addressID;
 	
-	PaymentRequest(){
+	public PaymentRequest(){
 		
 	}
 	

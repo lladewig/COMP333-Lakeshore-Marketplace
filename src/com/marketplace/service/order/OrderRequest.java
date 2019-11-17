@@ -5,58 +5,52 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.marketplace.domain.address.Address;
-import com.marketplace.domain.customer.Customer;
-import com.marketplace.domain.partner.Partner;
-import com.marketplace.domain.payment.Payment;
-import com.marketplace.domain.product.Product;
-
-@XmlRootElement(name = "AddressRequest")
+@XmlRootElement(name = "OrderRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class OrderRequest {
 	
 	private int orderID;
-	private Customer customer;
-	private Product product;
-	private Payment payment;
+	private int customerID;
+	private int productID;
+	private int paymentID;
 	private String status;
-	private Address shipmentAddress;
+	private int addressID;
 	
-	OrderRequest(){
+	public OrderRequest(){
 		
 	}
 	
-	public int getorderID() {
+	public int getOrderID() {
 		return orderID;
 	}
 	
-	public void setorderID(int newID) {
+	public void setOrderID(int newID) {
 		orderID = newID;
 	}
 	
-	public Customer getcustomer() {
-		return customer;
+	public int getCustomerID() {
+		return customerID;
 	}
 	
-	public void setcustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomer(int customer) {
+		this.customerID = customer;
 	}
 	
-	public Product getProduct() {
-		return product;
+	public int getProductID() {
+		return productID;
 	}
 	
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductID(int productID) {
+		this.productID = productID;
 	}
 	
-	public Payment getPayment() {
-		return payment;
+	public int getPaymentID() {
+		return paymentID;
 	}
 	
-	public void setPayment(Payment payment) {
-		this.payment = payment;
+	public void setPaymentID(int paymentID) {
+		this.paymentID = paymentID;
 	}
 	
 	public String getStatus() {
@@ -67,11 +61,11 @@ public class OrderRequest {
 		status = newStatus;
 	}
 	
-	public Address getshipmentAddress() {
-		return shipmentAddress;
+	public int getAddressID() {
+		return addressID;
 	}
 	
-	public void setshipmentAddress(Address newShipmentAddress) {
-		shipmentAddress = newShipmentAddress;
+	public void setAddressID(int addressID) {
+		this.addressID = addressID;
 	}
 }

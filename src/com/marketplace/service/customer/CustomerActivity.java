@@ -14,11 +14,7 @@ public class CustomerActivity {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.getCustomer(customerID);
 		
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		cRes.setCustomerID(customer.getcustomerID());
-		cRes.setFirstName(customer.getfirstName());
-		cRes.setLastName(customer.getlastName());
-		cRes.setPhoneNumber(customer.getphoneNumber());
+		CustomerRepresentation cRes = buildResponse(customer);
 		return cRes;
 	}
 	
@@ -33,12 +29,7 @@ public class CustomerActivity {
 		while(it.hasNext()) {
           Customer customer = (Customer)it.next();
           
-          CustomerRepresentation cRes = new CustomerRepresentation();
-          cRes.setCustomerID(customer.getcustomerID());
-          cRes.setFirstName(customer.getfirstName());
-          cRes.setLastName(customer.getlastName());
-          cRes.setPhoneNumber(customer.getphoneNumber());
-          
+          CustomerRepresentation cRes = buildResponse(customer);
           cResponses.add(cRes);
         }
 		return cResponses;
@@ -48,13 +39,7 @@ public class CustomerActivity {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.addCustomer(cReq.getFirstName(), cReq.getLastName(), cReq.getPhoneNumber());
 		
-		
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		cRes.setCustomerID(customer.getcustomerID());
-		cRes.setFirstName(customer.getfirstName());
-		cRes.setLastName(customer.getlastName());
-		cRes.setPhoneNumber(customer.getphoneNumber());
-		
+		CustomerRepresentation cRes = buildResponse(customer);
 		return cRes;
 	}
 	
@@ -62,11 +47,7 @@ public class CustomerActivity {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.deleteCustomer(customerID);
 		
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		cRes.setCustomerID(customer.getcustomerID());
-		cRes.setFirstName(customer.getfirstName());
-		cRes.setLastName(customer.getlastName());
-		cRes.setPhoneNumber(customer.getphoneNumber());
+		CustomerRepresentation cRes = buildResponse(customer);
 		return cRes;
 	}
 	
@@ -74,12 +55,7 @@ public class CustomerActivity {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.updateCustomerFirstName(cReq.getFirstName(), cReq.getCustomerID());
 		
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		cRes.setCustomerID(customer.getcustomerID());
-		cRes.setFirstName(customer.getfirstName());
-		cRes.setLastName(customer.getlastName());
-		cRes.setPhoneNumber(customer.getphoneNumber());
-		
+		CustomerRepresentation cRes = buildResponse(customer);
 		return cRes;
 	}
 	
@@ -87,12 +63,7 @@ public class CustomerActivity {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.updateCustomerLastName(cReq.getLastName(), cReq.getCustomerID());
 		
-		CustomerRepresentation cRes = new CustomerRepresentation();
-		cRes.setCustomerID(customer.getcustomerID());
-		cRes.setFirstName(customer.getfirstName());
-		cRes.setLastName(customer.getlastName());
-		cRes.setPhoneNumber(customer.getphoneNumber());
-		
+		CustomerRepresentation cRes = buildResponse(customer);
 		return cRes;
 	}
 	
@@ -100,6 +71,11 @@ public class CustomerActivity {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.updateCustomerPhoneNumber(cReq.getPhoneNumber(), cReq.getCustomerID());
 		
+		CustomerRepresentation cRes = buildResponse(customer);
+		return cRes;
+	}
+	
+	private CustomerRepresentation buildResponse(Customer customer) {
 		CustomerRepresentation cRes = new CustomerRepresentation();
 		cRes.setCustomerID(customer.getcustomerID());
 		cRes.setFirstName(customer.getfirstName());

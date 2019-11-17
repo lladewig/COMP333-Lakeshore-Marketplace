@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.marketplace.domain.partner.Partner;
+import com.marketplace.service.partner.PartnerRepresentation;
 
 @XmlRootElement(name = "Product")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,12 +14,12 @@ public class ProductRepresentation {
 
 	
 	private int productID;
-	private Partner partner;
+	private PartnerRepresentation partner;
 	private String productName;
 	private String productDescription;
 	private double productCost;
 	
-	ProductRepresentation(){
+	public ProductRepresentation(){
 		
 	}
 	
@@ -31,11 +31,11 @@ public class ProductRepresentation {
 		this.productID = productID;
 	}
 	
-	public Partner getPartner() {
+	public PartnerRepresentation getPartner() {
 		return partner;
 	}
 	
-	public void setPartner(Partner partner) {
+	public void setPartner(PartnerRepresentation partner) {
 		this.partner = partner;
 	}
 	

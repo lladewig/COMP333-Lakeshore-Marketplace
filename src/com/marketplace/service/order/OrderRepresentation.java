@@ -9,20 +9,24 @@ import com.marketplace.domain.address.Address;
 import com.marketplace.domain.customer.Customer;
 import com.marketplace.domain.payment.Payment;
 import com.marketplace.domain.product.Product;
+import com.marketplace.service.address.AddressRepresentation;
+import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.payment.PaymentRepresentation;
+import com.marketplace.service.product.ProductRepresentation;
 
-@XmlRootElement(name = "Product")
+@XmlRootElement(name = "Order")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class OrderRepresentation {
 	
 	private int orderID;
-	private Customer customer;
-	private Product product;
-	private Payment payment;
+	private CustomerRepresentation customer;
+	private ProductRepresentation product;
+	private PaymentRepresentation payment;
 	private String status;
-	private Address shipmentAddress;
+	private AddressRepresentation shipmentAddress;
 	
-	OrderRepresentation(){
+	public OrderRepresentation(){
 		
 	}
 	
@@ -34,27 +38,27 @@ public class OrderRepresentation {
 		orderID = newID;
 	}
 	
-	public Customer getcustomer() {
+	public CustomerRepresentation getcustomer() {
 		return customer;
 	}
 	
-	public void setcustomer(Customer customer) {
+	public void setcustomer(CustomerRepresentation customer) {
 		this.customer = customer;
 	}
 	
-	public Product getProduct() {
+	public ProductRepresentation getProduct() {
 		return product;
 	}
 	
-	public void setProduct(Product product) {
+	public void setProduct(ProductRepresentation product) {
 		this.product = product;
 	}
 	
-	public Payment getPayment() {
+	public PaymentRepresentation getPayment() {
 		return payment;
 	}
 	
-	public void setPayment(Payment payment) {
+	public void setPayment(PaymentRepresentation payment) {
 		this.payment = payment;
 	}
 	
@@ -66,11 +70,11 @@ public class OrderRepresentation {
 		status = newStatus;
 	}
 	
-	public Address getshipmentAddress() {
+	public AddressRepresentation getshipmentAddress() {
 		return shipmentAddress;
 	}
 	
-	public void setshipmentAddress(Address newShipmentAddress) {
+	public void setshipmentAddress(AddressRepresentation newShipmentAddress) {
 		shipmentAddress = newShipmentAddress;
 	}
 }

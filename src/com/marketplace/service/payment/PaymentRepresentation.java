@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlType;
 
 import com.marketplace.domain.address.Address;
 import com.marketplace.domain.customer.Customer;
+import com.marketplace.service.address.AddressRepresentation;
 
 @XmlRootElement(name = "Payment")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -17,9 +18,9 @@ public class PaymentRepresentation {
 	private int cardNumber;
 	private int securityCode;
 	private String expirationDate;
-	private Address address;
+	private AddressRepresentation address;
 	
-	PaymentRepresentation(){
+	public PaymentRepresentation(){
 		
 	}
 	
@@ -55,11 +56,11 @@ public class PaymentRepresentation {
 		this.expirationDate = expirationDate;
 	}
 	
-	public Address getAddress() {
+	public AddressRepresentation getAddress() {
 		return address;
 	}
 	
-	public void setAddress(Address address) {
+	public void setAddress(AddressRepresentation address) {
 		this.address = address;
 	}
 }

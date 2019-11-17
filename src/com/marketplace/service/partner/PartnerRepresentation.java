@@ -14,7 +14,7 @@ public class PartnerRepresentation {
 	private String partnerType;
 	private String partnerDetails;
 	
-	PartnerRepresentation(){
+	public PartnerRepresentation(){
 		
 	}
 

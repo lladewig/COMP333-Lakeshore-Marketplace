@@ -7,14 +7,14 @@ import com.marketplace.domain.partner.Partner;
 
 public class ProductLogic {
 	
-	public static Product getProductByID(int id) {
+	public Product getProductByID(int id) {
 		ProductDAL pd = new ProductDAL();
 		return pd.getProductByID(id);
 	}
 	
-	public List<Product> getAllProducts() {
+	public List<Product> getAllProducts(int offset, int limit) {
 		ProductDAL pd = new ProductDAL();
-		return pd.getAllProducts();
+		return pd.getAllProducts(offset, limit);
 	}
 	
 	public List<Product> getAllProductsByPartner(int partnerID){
@@ -22,9 +22,9 @@ public class ProductLogic {
 		return pd.getAllProductsByPartner(partnerID);
 	}
 	
-	public Product addProduct(Partner partner, String productName, String productDescription, double cost) {
+	public Product addProduct(int partnerID, String productName, String productDescription, double cost) {
 		ProductDAL pd = new ProductDAL();
-	    return pd.addProduct(partner, productName, productDescription, cost);
+	    return pd.addProduct(partnerID, productName, productDescription, cost);
 	}
 	
 	public Product deleteProduct(int id){

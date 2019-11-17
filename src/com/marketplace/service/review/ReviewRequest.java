@@ -8,13 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "ReviewRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-
 public class ReviewRequest  {
 	
 	private int reviewID;
 	private int reviewScore;
-	private Customer customer;
-	private Product product;
+	private int customerID;
+	private int productID;
 	private String reviewBody;
 	
 	public ReviewRequest() {}
@@ -32,17 +31,17 @@ public class ReviewRequest  {
 	public void setReviewScore(int reviewScore) {
 		this.reviewScore = reviewScore;
 	}
-	public String getCustomer() {
-		return customer;
+	public int getCustomerID() {
+		return customerID;
 	}
-	public void setCustomer(String customer) {
-		this.customer = customer;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
-	public String getProduct() {
-		return product;
+	public int getProductID() {
+		return productID;
 	}
-	public void setProdcut(String product) {
-		this.product = product;
+	public void setProdcutID(int productID) {
+		this.productID = productID;
 	}
 	public String getReviewBody() {
 		return reviewBody;

@@ -13,9 +13,14 @@ public class OrderLogic {
 		return od.getOrderByID(orderID);
 	}	
 	
-	public List<Order> getAllOrdersForCustomer(int custID){
+	public List<Order> getAllOrders(int offset, int limit){
 		OrderDAL od = new OrderDAL();
-		return od.getAllOrdersForCustomer(custID);
+		return od.getAllOrders(offset, limit);
+	}
+	
+	public List<Order> getAllOrdersForCustomer(int custID, int offset, int limit){
+		OrderDAL od = new OrderDAL();
+		return od.getAllOrdersForCustomer(custID, offset, limit);
 	}
 	
 	public Order updateOrderStatus(String reviewStatus, int id) {
@@ -30,12 +35,12 @@ public class OrderLogic {
 		return order;
 	}
 	
-	public Order addOrder(int custID, int paymentID, int productID, String status, Address shipmentAddress) {
+	public Order addOrder(int custID, int paymentID, int productID, String status, int addressID) {
 		OrderDAL od = new OrderDAL();
-		return od.addOrder(custID, paymentID, productID, status, shipmentAddress);
+		return od.addOrder(custID, paymentID, productID, status, addressID);
 	}
 	
-	public static Order deleteOrder(int orderID) {
+	public Order deleteOrder(int orderID) {
 		OrderDAL od = new OrderDAL();
 		return od.deleteOrder(orderID);
 	}

@@ -11,14 +11,14 @@ public class ReviewLogic {
 		return rd.getReviewByID(reviewID);
 	}
 	
-	public List<Review> getAllReviewForCustomer(int custID){
+	public List<Review> getAllReviewForCustomer(int custID, int offset, int limit){
 		ReviewDAL rd = new ReviewDAL();
-		return rd.getAllReviewForCustomer(custID);
+		return rd.getAllReviewForCustomer(custID, offset, limit);
 	}
 
-	public List<Review> getAllReviewForProduct(int productID){
+	public List<Review> getAllReviewForProduct(int productID, int offset, int limit){
 		ReviewDAL rd = new ReviewDAL();
-		return rd.getAllReviewForProduct(productID);
+		return rd.getAllReviewForProduct(productID, offset, limit);
 	}
 	
 	public Review addReview(int custID, int reviewScore, int productID, String reviewBody) {
@@ -26,7 +26,7 @@ public class ReviewLogic {
 		return rd.addReview(custID, reviewScore, productID, reviewBody);
 	}
 	
-	public static Review deleteReview(int reviewID) {
+	public Review deleteReview(int reviewID) {
 		ReviewDAL rd = new ReviewDAL();
 		return rd.deleteReview(reviewID);
 	}
