@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.LinkRepresentation;
 import com.marketplace.service.product.ProductRepresentation;
 
 
@@ -13,7 +14,7 @@ import com.marketplace.service.product.ProductRepresentation;
 @XmlRootElement(name = "Review")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class ReviewRepresentation  {
+public class ReviewRepresentation extends LinkRepresentation {
 	
 	
 	private int reviewID;

@@ -5,14 +5,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.marketplace.domain.address.Address;
-import com.marketplace.domain.customer.Customer;
 import com.marketplace.service.address.AddressRepresentation;
+import com.marketplace.service.link.LinkRepresentation;
 
 @XmlRootElement(name = "Payment")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class PaymentRepresentation {
+public class PaymentRepresentation extends LinkRepresentation {
 
 	private int paymentID;
 	private int cardNumber;
