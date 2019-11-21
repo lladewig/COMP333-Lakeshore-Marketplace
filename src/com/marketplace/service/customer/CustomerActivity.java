@@ -39,8 +39,19 @@ public class CustomerActivity {
 	public CustomerRepresentation addCustomer(CustomerRequest cReq) {
 		CustomerLogic custLogic = new CustomerLogic();
 		Customer customer = custLogic.addCustomer(cReq.getFirstName(), cReq.getLastName(), cReq.getPhoneNumber());
-		
-		CustomerRepresentation cRes = buildResponse(customer);
+		Link address = new Link("addAddress", 
+				"http://localhost:8081/addressservice/addresses", "application/xml");	
+		Link delCustomer = new Link("deleteCustomer", 
+				"http://localhost:8081/customerservice/customers/" + customer.getcustomerID(), "null");	
+		Link updateCustomerFirst = new Link("updateCustomerFirstName", 
+				"http://localhost:8081/customerservice/customers/first", "application/xm");	
+		Link updateCustLast = new Link("updateCustomerLastName", 
+				"http://localhost:8081/customerservice/customers/last", "application/xml");
+		Link updateCustPhone = new Link("updateCustomerPhoneNumber", 
+				"http://localhost:8081/customerservice/customers/phone", "application/xml");
+		Link addCustomer = new Link("addCustomer", 
+				"http://localhost:8081/customerservice/customer", "application/xml");
+		CustomerRepresentation cRes = buildResponse(customer, address,delCustomer,updateCustomerFirst,updateCustLast,updateCustPhone,addCustomer);
 		return cRes;
 	}
 	
@@ -83,24 +94,8 @@ public class CustomerActivity {
 		cRes.setLastName(customer.getlastName());
 		cRes.setPhoneNumber(customer.getphoneNumber());
 		
-		Link address = new Link("addAddress", 
-				"http://localhost:8081/addressservice/addresses", "application/xml");	
-		Link delCustomer = new Link("deleteCustomer", 
-				"http://localhost:8081/customerservice/customers/" + customer.getcustomerID(), "null");	
-		Link updateCustomerFirst = new Link("updateCustomerFirstName", 
-				"http://localhost:8081/customerservice/customers/first", "application/xm");	
-		Link updateCustLast = new Link("updateCustomerLastName", 
-				"http://localhost:8081/customerservice/customers/last", "application/xml");
-		Link updateCustPhone = new Link("updateCustomerPhoneNumber", 
-				"http://localhost:8081/customerservice/customers/phone", "application/xml");
-		Link addCustomer = new Link("addCustomer", 
-				"http://localhost:8081/customerservice/customer", "application/xml");
-		cRes.setLinks(address);
-		cRes.setLinks(delCustomer);
-		cRes.setLinks(updateCustomerFirst);
-		cRes.setLinks(updateCustLast);
-		cRes.setLinks(updateCustPhone);
-		cRes.setLinks(addCustomer);
+		
+		cRes.setLinks(links);
 		return cRes;
 	}
 }

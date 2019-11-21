@@ -7,6 +7,7 @@ import java.util.List;
 import com.marketplace.domain.address.Address;
 import com.marketplace.domain.address.AddressLogic;
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.Link;
 
 public class AddressActivity {
 	
@@ -38,8 +39,12 @@ public class AddressActivity {
 	public AddressRepresentation addAddress(AddressRequest aReq) {
 		AddressLogic aLogic = new AddressLogic();
 		Address address = aLogic.addAddress(aReq.getCustomerID(), aReq.getStreetAddress(), aReq.getUnitNumber(), aReq.getZipCode(), aReq.getCity(), aReq.getState());
-		
-		AddressRepresentation aRes = buildResponse(address);
+
+		Link payment = new Link("addPayment", 
+				"http://localhost:8081/paymentservice/payments", "application/xml");	
+		Link delAddr = new Link("deleteAddress", 
+				"http://localhost:8081/addressservice/" + address.getaddressID(), "null");	
+		AddressRepresentation aRes = buildResponse(address, payment, delAddr);
 		return aRes;
 	}
 	
@@ -51,7 +56,7 @@ public class AddressActivity {
 		return aRes;
 	}
 	
-	private AddressRepresentation buildResponse(Address address) {
+	private AddressRepresentation buildResponse(Address address, Link...links) {
 		AddressRepresentation aRes = new AddressRepresentation();
 		
 		CustomerRepresentation cRes = new CustomerRepresentation();
@@ -66,6 +71,7 @@ public class AddressActivity {
 		aRes.setZipCode(address.getzipCode());
 		aRes.setCity(address.getcity());
 		aRes.setState(address.getstate());
+		aRes.setLinks(links);
 		return aRes;
 	}
 

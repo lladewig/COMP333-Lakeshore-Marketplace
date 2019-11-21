@@ -8,6 +8,7 @@ import com.marketplace.domain.payment.Payment;
 import com.marketplace.domain.payment.PaymentLogic;
 import com.marketplace.service.address.AddressRepresentation;
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.Link;
 
 public class PaymentActivity {
 	
@@ -56,7 +57,19 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.addPayment(pReq.getCustomerID(), pReq.getCardNumber(), pReq.getSecurityCode(), pReq.getExpirationDate(), pReq.getAddressID());
 		
-		PaymentRepresentation pRes = buildResponse(payment);
+		Link getAllProd = new Link("getAllProducts", 
+				"http://localhost:8081/productservice/products?offset=0&limit=10", "null");	
+		Link updatePaymentCardNum = new Link("updatePaymentCardNum", 
+				"http://localhost:8081/paymentservice/payments/card", "application/xm");	
+		Link updatePaymentExpir = new Link("updatePaymentCardExpiration", 
+				"http://localhost:8081/paymentservice/payments/expiration", "application/xml");
+		Link updatePaymentAddress = new Link("updatePaymentAddress", 
+				"http://localhost:8081/paymentservice/payments/address", "application/xml");
+		Link updatePaymentSecurityCode = new Link("updatePaymentSecurityCode", 
+				"http://localhost:8081/paymentservice/payments/security", "application/xml");
+		Link delPayment = new Link("delPayment", 
+				"http://localhost:8081/paymentservice/payments/"+payment.getpaymentID(), "null");
+		PaymentRepresentation pRes = buildResponse(payment, getAllProd,updatePaymentCardNum,updatePaymentExpir,updatePaymentAddress,updatePaymentSecurityCode, delPayment);
 		return pRes;
 	}
 	
@@ -100,7 +113,7 @@ public class PaymentActivity {
 		return pRes;
 	}
 	
-	private PaymentRepresentation buildResponse(Payment payment) {
+	private PaymentRepresentation buildResponse(Payment payment, Link...links) {
 		PaymentRepresentation pRes = new PaymentRepresentation();
 		AddressRepresentation aRes = new AddressRepresentation();
 		CustomerRepresentation cRes = new CustomerRepresentation();
@@ -123,6 +136,7 @@ public class PaymentActivity {
 		pRes.setSecurityCode(payment.getsecurityCode());
 		pRes.setExpirationDate(payment.getexpirationDate());
 		pRes.setAddress(aRes);	
+		pRes.setLinks(links);
 		return pRes;
 	}
 }

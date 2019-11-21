@@ -8,6 +8,7 @@ import com.marketplace.domain.order.Order;
 import com.marketplace.domain.order.OrderLogic;
 import com.marketplace.service.address.AddressRepresentation;
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.Link;
 import com.marketplace.service.partner.PartnerRepresentation;
 import com.marketplace.service.payment.PaymentRepresentation;
 import com.marketplace.service.product.ProductRepresentation;
@@ -60,7 +61,12 @@ public class OrderActivity {
 		OrderLogic oLogic = new OrderLogic();
 		Order order = oLogic.addOrder(aReq.getCustomerID(), aReq.getProductID(), aReq.getPaymentID(), aReq.getStatus(), aReq.getAddressID());
 		
-		OrderRepresentation oRes = buildResponse(order);
+		Link getOrderByID = new Link("getOrder", "http://localhost:8080/orderservice/orders/" + order.getorderID(), "null");
+		Link deleteOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
+		Link getAllOrders = new Link("getAllOrdersForCustomer", "http://localhost:8081/orderservice/orders?custID="+order.getcustomer().getcustomerID()+"&offset=0&limit=20", "null");
+		Link addReview = new Link("addReview", "http://localhost:8080/reviewservice/reviews" + order.getProduct().getproductID(), "application/xml");
+		
+		OrderRepresentation oRes = buildResponse(order, getOrderByID, deleteOrder, getAllOrders, addReview);
 		return oRes;
 	}
 	
@@ -73,7 +79,7 @@ public class OrderActivity {
 	}
 
 	
-	private OrderRepresentation buildResponse(Order order) {
+	private OrderRepresentation buildResponse(Order order, Link...links) {
 		OrderRepresentation oRes = new OrderRepresentation();
 		
 		ProductRepresentation prodRes = new ProductRepresentation();
@@ -114,6 +120,7 @@ public class OrderActivity {
 		oRes.setPayment(payRes);
 		oRes.setStatus(order.getStatus());
 		oRes.setshipmentAddress(aRes);
+		oRes.setLinks(links);
 		return oRes;
 	}
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import com.marketplace.domain.review.ReviewLogic;
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.Link;
 import com.marketplace.service.partner.PartnerRepresentation;
 import com.marketplace.service.product.ProductRepresentation;
 import com.marketplace.domain.review.Review;
@@ -31,9 +32,15 @@ public class ReviewActivity  {
 		while(it.hasNext()) {
 	          Review review = (Review)it.next();
 	          
-	          ReviewRepresentation rRes = buildResponse(review);
-	          rResponses.add(rRes);
+	          Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + productID + "&offset=10&limit=10", "null");
+	          ReviewRepresentation rRes = buildResponse(review, getProdReviews);
+	         rResponses.add(rRes);
         }
+		;
+		Link getAllProd = new Link("getAllProducts", "http://localhost:8081/productservice/products?offset=0&limit=10", "null");
+		Link order = new Link("orderProduct", "http://localhost:8081/orderservice/orders", "application/xml");
+		
+		rResponses.get(rResponses.size()-1).setLinks(getAllProd,order);
 		return rResponses;
 	}
 	
@@ -53,7 +60,7 @@ public class ReviewActivity  {
 		return rRes;
 	}
 	
-	private ReviewRepresentation buildResponse(Review review) {
+	private ReviewRepresentation buildResponse(Review review, Link...links) {
 		ReviewRepresentation rRes = new ReviewRepresentation();
 		CustomerRepresentation cRes = new CustomerRepresentation();
 		ProductRepresentation pRes = new ProductRepresentation();
@@ -80,6 +87,7 @@ public class ReviewActivity  {
 		rRes.setProduct(pRes);
 		rRes.setReviewScore(review.getReviewScore());
 		rRes.setReviewBody(review.getReviewBody());	
+		rRes.setLinks(links);
 		return rRes;
 	}
 	
