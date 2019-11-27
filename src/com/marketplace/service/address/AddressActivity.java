@@ -14,8 +14,9 @@ public class AddressActivity {
 	public AddressRepresentation getAddressByID(int addressID) {
 		AddressLogic aLogic = new AddressLogic();
 		Address address = aLogic.getAddressByID(addressID);
-		
-		AddressRepresentation aRes = buildResponse(address);
+		Link delAddr = new Link("deleteAddress", 
+				"http://localhost:8081/addressservice/" + address.getaddressID(), "null");	
+		AddressRepresentation aRes = buildResponse(address, delAddr);
 		return aRes;
 	}
 	
@@ -28,9 +29,13 @@ public class AddressActivity {
 		Iterator<Address> it = addresses.iterator();
 		while(it.hasNext()) {
           Address address = (Address)it.next();
-          
-        AddressRepresentation aRes = buildResponse(address);
-        aResponses.add(aRes);
+          Link getAllCustomers = new Link("getAllCustomers", "http://localhost:8081/customerservice/customers", "null");
+          Link getAllOrders = new Link("getAllOrders", "http://localhost:8081/orderservice/orders", "null");
+          Link getAllPartners = new Link("getAllPartners", "http://localhost:8081/partnerservice/partners", "null");
+          Link getAllPayments = new Link("getAllPayments", "http://localhost:8081/paymentservice/payments", "null");
+          Link getAllProducts = new Link("getAllProducts", "http://localhost:8081/productservice/products", "null");
+          AddressRepresentation aRes = buildResponse(address, getAllCustomers, getAllOrders, getAllPartners, getAllPayments, getAllProducts);
+          aResponses.add(aRes);
         }
 		
 		return aResponses;
@@ -51,8 +56,9 @@ public class AddressActivity {
 	public AddressRepresentation deleteAddress(int addressID) {
 		AddressLogic aLogic = new AddressLogic();
 		Address address = aLogic.deleteAddress(addressID);
-		
-		AddressRepresentation aRes = buildResponse(address);
+		Link addAddr = new Link("addAddress", 
+				"http://localhost:8081/addressservice/addresses", "application/xml");	
+		AddressRepresentation aRes = buildResponse(address, addAddr);
 		return aRes;
 	}
 	

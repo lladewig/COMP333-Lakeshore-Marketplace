@@ -19,7 +19,9 @@ public class OrderActivity {
 		OrderLogic oLogic = new OrderLogic();
 		Order order = oLogic.getOrderByID(orderID);
 		
-		OrderRepresentation oRes = buildResponse(order);
+		Link delOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + orderID, "application/xml");
+		Link updateOrder = new Link("updateOrderStatus", "http://localhost:8081/orderservice/orders/update", "application/xml");
+		OrderRepresentation oRes = buildResponse(order, delOrder, updateOrder);
 		return oRes;
 	}
 	
@@ -32,8 +34,12 @@ public class OrderActivity {
 		Iterator<Order> it = orders.iterator();
 		while(it.hasNext()) {
           Order order = (Order)it.next();
-          
-        OrderRepresentation oRes = buildResponse(order);
+          Link getAllAddresses = new Link("getAllAddress", "http://localhost:8081/addressservice/addresses", "null");
+          Link getAllCustomers = new Link("getAllCustomers", "http://localhost:8081/customerservice/customers", "null");
+          Link getAllPartners = new Link("getAllPartners", "http://localhost:8081/partnerservice/partners", "null");
+          Link getAllPayments = new Link("getAllPayments", "http://localhost:8081/paymentservice/payments", "null");
+          Link getAllProducts = new Link("getAllProducts", "http://localhost:8081/productservice/products", "null");
+        OrderRepresentation oRes = buildResponse(order, getAllAddresses, getAllCustomers, getAllPartners, getAllPayments, getAllProducts);
         aResponses.add(oRes);
         }
 		
@@ -49,8 +55,12 @@ public class OrderActivity {
 		Iterator<Order> it = orders.iterator();
 		while(it.hasNext()) {
           Order order = (Order)it.next();
-          
-        OrderRepresentation oRes = buildResponse(order);
+          Link getAllAddresses = new Link("getAllAddress", "http://localhost:8081/addressservice/addresses", "null");
+          Link getAllCustomers = new Link("getAllCustomers", "http://localhost:8081/customerservice/customers", "null");
+          Link getAllPartners = new Link("getAllPartners", "http://localhost:8081/partnerservice/partners", "null");
+          Link getAllPayments = new Link("getAllPayments", "http://localhost:8081/paymentservice/payments", "null");
+          Link getAllProducts = new Link("getAllProducts", "http://localhost:8081/productservice/products", "null");
+        OrderRepresentation oRes = buildResponse(order, getAllAddresses, getAllCustomers, getAllPartners, getAllPayments, getAllProducts);
         aResponses.add(oRes);
         }
 		
@@ -61,10 +71,10 @@ public class OrderActivity {
 		OrderLogic oLogic = new OrderLogic();
 		Order order = oLogic.addOrder(aReq.getCustomerID(), aReq.getProductID(), aReq.getPaymentID(), aReq.getStatus(), aReq.getAddressID());
 		
-		Link getOrderByID = new Link("getOrder", "http://localhost:8080/orderservice/orders/" + order.getorderID(), "null");
+		Link getOrderByID = new Link("getOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
 		Link deleteOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
 		Link getAllOrders = new Link("getAllOrdersForCustomer", "http://localhost:8081/orderservice/orders?custID="+order.getcustomer().getcustomerID()+"&offset=0&limit=20", "null");
-		Link addReview = new Link("addReview", "http://localhost:8080/reviewservice/reviews" + order.getProduct().getproductID(), "application/xml");
+		Link addReview = new Link("addReview", "http://localhost:8081/reviewservice/reviews" + order.getProduct().getproductID(), "application/xml");
 		
 		OrderRepresentation oRes = buildResponse(order, getOrderByID, deleteOrder, getAllOrders, addReview);
 		return oRes;
@@ -74,7 +84,16 @@ public class OrderActivity {
 		OrderLogic oLogic = new OrderLogic();
 		Order order = oLogic.deleteOrder(orderID);
 		
-		OrderRepresentation oRes = buildResponse(order);
+		Link addOrder = new Link("addOrder", "http://localhost:8081/orderservice/orders", "application/xml");
+		OrderRepresentation oRes = buildResponse(order, addOrder);
+		return oRes;
+	}
+	
+	public OrderRepresentation updateOrderStatus(OrderRequest aReq) {
+		OrderLogic oLogic = new OrderLogic();
+		Order order = oLogic.updateOrderStatus(aReq.getStatus(), aReq.getOrderID());
+		Link delOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + aReq.getOrderID(), "application/xml");
+		OrderRepresentation oRes = buildResponse(order, delOrder);
 		return oRes;
 	}
 

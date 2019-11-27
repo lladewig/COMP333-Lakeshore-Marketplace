@@ -23,9 +23,9 @@ public class OrderLogic {
 		return od.getAllOrdersForCustomer(custID, offset, limit);
 	}
 	
-	public Order updateOrderStatus(String reviewStatus, int id) {
+	public Order updateOrderStatus(String newStatus, int id) {
 		OrderDAL od = new OrderDAL();
-		Order order = od.updateOrderStatus(reviewStatus, id);
+		Order order = od.updateOrderStatus(newStatus, id);
 		return order;
 	}
 
