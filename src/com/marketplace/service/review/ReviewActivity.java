@@ -17,8 +17,8 @@ public class ReviewActivity  {
 	public ReviewRepresentation getReview(int reviewID) {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.getReviewByID(reviewID);
-		
-		ReviewRepresentation rRes = buildResponse(review);
+		Link delReview = new Link("deleteReview", "http:/localhost:8081/reviewservice/reviews/"+ reviewID, "null");
+		ReviewRepresentation rRes = buildResponse(review, delReview);
 		return rRes;
 	}
 	
@@ -32,31 +32,29 @@ public class ReviewActivity  {
 		while(it.hasNext()) {
 	          Review review = (Review)it.next();
 	          
-	          Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + productID + "&offset=10&limit=10", "null");
-	          ReviewRepresentation rRes = buildResponse(review, getProdReviews);
+	         Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + productID + "&offset=10&limit=10", "null");
+	  		 Link getAllProd = new Link("getAllProducts", "http://localhost:8081/productservice/products?offset=0&limit=10", "null");
+	  		 Link order = new Link("orderProduct", "http://localhost:8081/orderservice/orders", "application/xml");
+	  		
+	         ReviewRepresentation rRes = buildResponse(review, getProdReviews, getAllProd, order);
 	         rResponses.add(rRes);
         }
-		;
-		Link getAllProd = new Link("getAllProducts", "http://localhost:8081/productservice/products?offset=0&limit=10", "null");
-		Link order = new Link("orderProduct", "http://localhost:8081/orderservice/orders", "application/xml");
-		
-		rResponses.get(rResponses.size()-1).setLinks(getAllProd,order);
 		return rResponses;
 	}
 	
 	public ReviewRepresentation addReview(ReviewRequest rReq) {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.addReview(rReq.getCustomerID(), rReq.getReviewScore(), rReq.getProductID(), rReq.getReviewBody());
-		
-		ReviewRepresentation rRes = buildResponse(review);
+		Link delReview = new Link("deleteReview", "http:/localhost:8081/reviewservice/reviews/"+rReq.getReviewID(), "null");
+		ReviewRepresentation rRes = buildResponse(review, delReview);
 		return rRes;
 	}
 	
 	public ReviewRepresentation deleteReview(int reviewID) {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.deleteReview(reviewID);
-		
-		ReviewRepresentation rRes = buildResponse(review);
+		Link addReview = new Link("addReview", "http:/localhost:8081/reviewservice/reviews", "application/xml");
+		ReviewRepresentation rRes = buildResponse(review, addReview);
 		return rRes;
 	}
 	

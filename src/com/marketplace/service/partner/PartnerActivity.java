@@ -6,14 +6,17 @@ import java.util.List;
 
 import com.marketplace.domain.partner.Partner;
 import com.marketplace.domain.partner.PartnerLogic;
+import com.marketplace.service.link.Link;
 
 public class PartnerActivity {
 	
 	public PartnerRepresentation getPartnerByID(int partnerID) {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.getPartnerByID(partnerID);
-		
-		PartnerRepresentation pRes = buildResponse(partner);
+		Link updateName = new Link("updatePartnerName", "http:/localhost:8081/partnerservice/partners/name", "application/xml");
+		Link updateDetails = new Link("updatePartnerDetails", "http://localhost:8081/partnerservice/partners/details", "application/xml");
+		Link delPartner = new Link("deletePartner", "http://localhost:8081/partnerservice/partners/" + partnerID, "null");
+		PartnerRepresentation pRes = buildResponse(partner, updateName, updateDetails, delPartner);
 		return pRes;
 	}
 	
@@ -26,8 +29,13 @@ public class PartnerActivity {
 		Iterator<Partner> it = partners.iterator();
 		while(it.hasNext()) {
           Partner partner = (Partner)it.next();
-          
-          PartnerRepresentation pRes = buildResponse(partner);
+
+          Link getAllAddresses = new Link("getAllAddress", "http://localhost:8081/addressservice/addresses", "null");
+          Link getAllOrders = new Link("getAllOrders", "http://localhost:8081/orderservice/orders", "null");
+          Link getAllCustomers = new Link("getAllCustomers", "http://localhost:8081/customerservice/customers", "null");
+          Link getAllPayments = new Link("getAllPayments", "http://localhost:8081/paymentservice/payments", "null");
+          Link getAllProducts = new Link("getAllProducts", "http://localhost:8081/productservice/products", "null");
+          PartnerRepresentation pRes = buildResponse(partner, getAllAddresses, getAllOrders, getAllCustomers, getAllPayments, getAllProducts);
           pResponses.add(pRes);
         }
 		return pResponses;		
@@ -37,35 +45,43 @@ public class PartnerActivity {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.addPartner(pReq.getPartnerName(), pReq.getPartnerType(), pReq.getPartnerDetails());
 		
-		PartnerRepresentation pRes = buildResponse(partner);
+		Link addProduct = new Link("addProduct", "http://localhost:8081/productservice/products", "application/xml");
+		Link updateName = new Link("updatePartnerName", "http:/localhost:8081/partnerservice/partners/name", "application/xml");
+		Link updateDetails = new Link("updatePartnerDetails", "http://localhost:8081/partnerservice/partners/details", "application/xml");
+		Link delPartner = new Link("deletePartner", "http://localhost:8081/partnerservice/partners/" + pReq.getPartnerID(), "null");
+		PartnerRepresentation pRes = buildResponse(partner, addProduct, updateName, updateDetails, delPartner);
 		return pRes;
 	}
 	
 	public PartnerRepresentation deletePartner(int partnerID) {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.deletePartner(partnerID);
-		
-		PartnerRepresentation pRes = buildResponse(partner);
+		Link addPartner = new Link("addPartner", "http://localhost:8081/partnerservice/partners", "application/xml");
+		PartnerRepresentation pRes = buildResponse(partner, addPartner);
 		return pRes;
 	}
 	
 	public PartnerRepresentation updatePartnerName(PartnerRequest pReq) {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.updatePartnerName(pReq.getPartnerID(), pReq.getPartnerName());
-		
-		PartnerRepresentation pRes = buildResponse(partner);
+		Link addProduct = new Link("addProduct", "http://localhost:8081/productservice/products", "application/xml");
+		Link updateDetails = new Link("updatePartnerDetails", "http://localhost:8081/partnerservice/partners/details", "application/xml");
+		Link delPartner = new Link("deletePartner", "http://localhost:8081/partnerservice/partners/" + pReq.getPartnerID(), "null");
+		PartnerRepresentation pRes = buildResponse(partner, addProduct, updateDetails, delPartner);
 		return pRes;
 	}
 	
 	public PartnerRepresentation updatePartnerDetails(PartnerRequest pReq) {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.updatePartnerDetails(pReq.getPartnerID(), pReq.getPartnerDetails());
-		
-		PartnerRepresentation pRes = buildResponse(partner);
+		Link addProduct = new Link("addProduct", "http://localhost:8081/productservice/products", "application/xml");
+		Link updateName = new Link("updatePartnerName", "http:/localhost:8081/partnerservice/partners/name", "application/xml");
+		Link delPartner = new Link("deletePartner", "http://localhost:8081/partnerservice/partners/" + pReq.getPartnerID(), "null");
+		PartnerRepresentation pRes = buildResponse(partner, addProduct, updateName, delPartner);
 		return pRes;
 	}
 	
-	private PartnerRepresentation buildResponse(Partner partner) {
+	private PartnerRepresentation buildResponse(Partner partner, Link...links) {
 		PartnerRepresentation pRes = new PartnerRepresentation();
 		pRes.setPartnerID(partner.getpartnerID());
 		pRes.setPartnerName(partner.getpartnerName());

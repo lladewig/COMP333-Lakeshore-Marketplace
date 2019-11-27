@@ -15,8 +15,17 @@ public class PaymentActivity {
 	public PaymentRepresentation getPayment(int paymentID) {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.getPayment(paymentID);
-		
-		PaymentRepresentation pRes = buildResponse(payment);
+		Link updatePaymentCardNum = new Link("updatePaymentCardNum", 
+				"http://localhost:8081/paymentservice/payments/card", "application/xm");	
+		Link updatePaymentExpir = new Link("updatePaymentCardExpiration", 
+				"http://localhost:8081/paymentservice/payments/expiration", "application/xml");
+		Link updatePaymentAddress = new Link("updatePaymentAddress", 
+				"http://localhost:8081/paymentservice/payments/address", "application/xml");
+		Link updatePaymentSecurityCode = new Link("updatePaymentSecurityCode", 
+				"http://localhost:8081/paymentservice/payments/security", "application/xml");
+		Link delPayment = new Link("delPayment", 
+				"http://localhost:8081/paymentservice/payments/"+payment.getpaymentID(), "null");
+		PaymentRepresentation pRes = buildResponse(payment, updatePaymentCardNum, updatePaymentExpir, updatePaymentAddress, updatePaymentSecurityCode, delPayment);
 		return pRes;
 	}
 	
@@ -29,8 +38,13 @@ public class PaymentActivity {
 		Iterator<Payment> it = payments.iterator();
 		while(it.hasNext()) {
 			Payment payment = (Payment)it.next();
-		  
-			PaymentRepresentation pRes = buildResponse(payment);
+
+	          Link getAllAddresses = new Link("getAllAddress", "http://localhost:8081/addressservice/addresses", "null");
+	          Link getAllOrders = new Link("getAllOrders", "http://localhost:8081/orderservice/orders", "null");
+	          Link getAllPartners = new Link("getAllPartners", "http://localhost:8081/partnerservice/partners", "null");
+	          Link getAllCustomers = new Link("getAllCustomers", "http://localhost:8081/customerservice/customers", "null");
+	          Link getAllProducts = new Link("getAllProducts", "http://localhost:8081/productservice/products", "null");
+			PaymentRepresentation pRes = buildResponse(payment, getAllAddresses, getAllOrders, getAllPartners, getAllCustomers, getAllProducts);
 			pResponses.add(pRes);
         }
 		return pResponses;
@@ -46,8 +60,8 @@ public class PaymentActivity {
 		Iterator<Payment> it = payments.iterator();
 		while(it.hasNext()) {
           Payment payment = (Payment)it.next();
-          
-          PaymentRepresentation pRes = buildResponse(payment);
+          Link getOrders = new Link("getAllOrdersForCustomer", "http:/localhost:8081/orderservice/orders?custID=" + customerID, "application/xml");
+          PaymentRepresentation pRes = buildResponse(payment, getOrders);
   			pResponses.add(pRes);
         }
 		return pResponses;
@@ -76,16 +90,24 @@ public class PaymentActivity {
 	public PaymentRepresentation deletePayment(int paymentID) {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.deletePayment(paymentID);
-		
-		PaymentRepresentation pRes = buildResponse(payment);
+		Link addPay = new Link("addPayment", "http:/localhost:8081/paymentservice/payments", "application/xml");
+		PaymentRepresentation pRes = buildResponse(payment, addPay);
 		return pRes;
 	}
 	
 	public PaymentRepresentation updatePaymentCardNumber(PaymentRequest pReq) {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentCardNumber(pReq.getCardNumber(), pReq.getPaymentID());
-		
-		PaymentRepresentation pRes = buildResponse(payment);
+			
+		Link updatePaymentExpir = new Link("updatePaymentCardExpiration", 
+				"http://localhost:8081/paymentservice/payments/expiration", "application/xml");
+		Link updatePaymentAddress = new Link("updatePaymentAddress", 
+				"http://localhost:8081/paymentservice/payments/address", "application/xml");
+		Link updatePaymentSecurityCode = new Link("updatePaymentSecurityCode", 
+				"http://localhost:8081/paymentservice/payments/security", "application/xml");
+		Link delPayment = new Link("delPayment", 
+				"http://localhost:8081/paymentservice/payments/"+payment.getpaymentID(), "null");
+		PaymentRepresentation pRes = buildResponse(payment, updatePaymentExpir, updatePaymentAddress, updatePaymentSecurityCode, delPayment);
 		return pRes;
 	}
 
@@ -93,23 +115,45 @@ public class PaymentActivity {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentSecurityCode(pReq.getSecurityCode(), pReq.getPaymentID());
 		
-		PaymentRepresentation pRes = buildResponse(payment);
+		Link updatePaymentCardNum = new Link("updatePaymentCardNum", 
+				"http://localhost:8081/paymentservice/payments/card", "application/xm");	
+		Link updatePaymentExpir = new Link("updatePaymentCardExpiration", 
+				"http://localhost:8081/paymentservice/payments/expiration", "application/xml");
+		Link updatePaymentAddress = new Link("updatePaymentAddress", 
+				"http://localhost:8081/paymentservice/payments/address", "application/xml");
+		Link delPayment = new Link("delPayment", 
+				"http://localhost:8081/paymentservice/payments/"+payment.getpaymentID(), "null");
+		PaymentRepresentation pRes = buildResponse(payment, updatePaymentCardNum, updatePaymentExpir, updatePaymentAddress, delPayment);
 		return pRes;
 	}
 	
 	public PaymentRepresentation updatePaymentExpirationDate(PaymentRequest pReq) {		
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentExpirationDate(pReq.getExpirationDate(), pReq.getPaymentID());
-		
-		PaymentRepresentation pRes = buildResponse(payment);
+		Link updatePaymentCardNum = new Link("updatePaymentCardNum", 
+				"http://localhost:8081/paymentservice/payments/card", "application/xm");	
+		Link updatePaymentAddress = new Link("updatePaymentAddress", 
+				"http://localhost:8081/paymentservice/payments/address", "application/xml");
+		Link updatePaymentSecurityCode = new Link("updatePaymentSecurityCode", 
+				"http://localhost:8081/paymentservice/payments/security", "application/xml");
+		Link delPayment = new Link("delPayment", 
+				"http://localhost:8081/paymentservice/payments/"+payment.getpaymentID(), "null");
+		PaymentRepresentation pRes = buildResponse(payment, updatePaymentCardNum, updatePaymentAddress, updatePaymentSecurityCode, delPayment);
 		return pRes;
 	}
 	
 	public PaymentRepresentation updatePaymentAddress(PaymentRequest pReq) {
 		PaymentLogic pLogic = new PaymentLogic();
 		Payment payment = pLogic.updatePaymentAddress(pReq.getAddressID(), pReq.getPaymentID());
-		
-		PaymentRepresentation pRes = buildResponse(payment);
+		Link updatePaymentCardNum = new Link("updatePaymentCardNum", 
+				"http://localhost:8081/paymentservice/payments/card", "application/xm");	
+		Link updatePaymentExpir = new Link("updatePaymentCardExpiration", 
+				"http://localhost:8081/paymentservice/payments/expiration", "application/xml");
+		Link updatePaymentSecurityCode = new Link("updatePaymentSecurityCode", 
+				"http://localhost:8081/paymentservice/payments/security", "application/xml");
+		Link delPayment = new Link("delPayment", 
+				"http://localhost:8081/paymentservice/payments/"+payment.getpaymentID(), "null");
+		PaymentRepresentation pRes = buildResponse(payment, updatePaymentCardNum, updatePaymentExpir, updatePaymentSecurityCode, delPayment);
 		return pRes;
 	}
 	

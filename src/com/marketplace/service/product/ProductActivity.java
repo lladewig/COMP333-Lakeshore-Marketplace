@@ -14,8 +14,9 @@ public class ProductActivity {
 	public ProductRepresentation getProductByID(int productID) {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.getProductByID(productID);
-		
-		ProductRepresentation aRes = buildResponse(product);
+		Link delProd = new Link("deleteOrder", "http:/localhost:8081/productservice/products/" + productID, "null");
+		Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + product.getproductID(), "null");
+		ProductRepresentation aRes = buildResponse(product, delProd, getProdReviews);
 		return aRes;
 	}
 	
@@ -45,16 +46,16 @@ public class ProductActivity {
 	public ProductRepresentation addProduct(ProductRequest aReq) {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.addProduct(aReq.getPartnerID(), aReq.getProductName(), aReq.getproductDescription(), aReq.getproductCost());
-		
-		ProductRepresentation aRes = buildResponse(product);
+		Link getAllOrders = new Link("getAllOrders", "http:/localhost:8081/orderservice/orders", "null");
+		ProductRepresentation aRes = buildResponse(product, getAllOrders);
 		return aRes;
 	}
 	
 	public ProductRepresentation deleteProduct(int productID) {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.deleteProduct(productID);
-		
-		ProductRepresentation aRes = buildResponse(product);
+		Link addProd = new Link("addProduct", "http:/localhost:8081/productservice/products", "application/xml");
+		ProductRepresentation aRes = buildResponse(product, addProd);
 		return aRes;
 	}
 
