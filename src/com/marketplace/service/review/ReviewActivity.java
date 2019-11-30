@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import com.marketplace.domain.review.ReviewLogic;
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.Link;
 import com.marketplace.service.partner.PartnerRepresentation;
 import com.marketplace.service.product.ProductRepresentation;
 import com.marketplace.domain.review.Review;
@@ -16,8 +17,8 @@ public class ReviewActivity  {
 	public ReviewRepresentation getReview(int reviewID) {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.getReviewByID(reviewID);
-		
-		ReviewRepresentation rRes = buildResponse(review);
+		Link delReview = new Link("deleteReview", "http:/localhost:8081/reviewservice/reviews/"+ reviewID, "null");
+		ReviewRepresentation rRes = buildResponse(review, delReview);
 		return rRes;
 	}
 	
@@ -31,8 +32,12 @@ public class ReviewActivity  {
 		while(it.hasNext()) {
 	          Review review = (Review)it.next();
 	          
-	          ReviewRepresentation rRes = buildResponse(review);
-	          rResponses.add(rRes);
+	         Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + productID + "&offset=10&limit=10", "null");
+	  		 Link getAllProd = new Link("getAllProducts", "http://localhost:8081/productservice/products?offset=0&limit=10", "null");
+	  		 Link order = new Link("orderProduct", "http://localhost:8081/orderservice/orders", "application/xml");
+	  		
+	         ReviewRepresentation rRes = buildResponse(review, getProdReviews, getAllProd, order);
+	         rResponses.add(rRes);
         }
 		return rResponses;
 	}
@@ -40,20 +45,20 @@ public class ReviewActivity  {
 	public ReviewRepresentation addReview(ReviewRequest rReq) {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.addReview(rReq.getCustomerID(), rReq.getReviewScore(), rReq.getProductID(), rReq.getReviewBody());
-		
-		ReviewRepresentation rRes = buildResponse(review);
+		Link delReview = new Link("deleteReview", "http:/localhost:8081/reviewservice/reviews/"+rReq.getReviewID(), "null");
+		ReviewRepresentation rRes = buildResponse(review, delReview);
 		return rRes;
 	}
 	
 	public ReviewRepresentation deleteReview(int reviewID) {
 		ReviewLogic rLogic = new ReviewLogic();
 		Review review = rLogic.deleteReview(reviewID);
-		
-		ReviewRepresentation rRes = buildResponse(review);
+		Link addReview = new Link("addReview", "http:/localhost:8081/reviewservice/reviews", "application/xml");
+		ReviewRepresentation rRes = buildResponse(review, addReview);
 		return rRes;
 	}
 	
-	private ReviewRepresentation buildResponse(Review review) {
+	private ReviewRepresentation buildResponse(Review review, Link...links) {
 		ReviewRepresentation rRes = new ReviewRepresentation();
 		CustomerRepresentation cRes = new CustomerRepresentation();
 		ProductRepresentation pRes = new ProductRepresentation();
@@ -80,6 +85,7 @@ public class ReviewActivity  {
 		rRes.setProduct(pRes);
 		rRes.setReviewScore(review.getReviewScore());
 		rRes.setReviewBody(review.getReviewBody());	
+		rRes.setLinks(links);
 		return rRes;
 	}
 	

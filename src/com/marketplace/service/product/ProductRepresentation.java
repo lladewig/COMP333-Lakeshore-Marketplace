@@ -5,12 +5,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.marketplace.service.link.LinkRepresentation;
 import com.marketplace.service.partner.PartnerRepresentation;
 
 @XmlRootElement(name = "Product")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class ProductRepresentation {
+public class ProductRepresentation extends LinkRepresentation {
 
 	
 	private int productID;

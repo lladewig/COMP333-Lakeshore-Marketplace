@@ -5,19 +5,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-import com.marketplace.domain.address.Address;
-import com.marketplace.domain.customer.Customer;
-import com.marketplace.domain.payment.Payment;
-import com.marketplace.domain.product.Product;
 import com.marketplace.service.address.AddressRepresentation;
 import com.marketplace.service.customer.CustomerRepresentation;
+import com.marketplace.service.link.LinkRepresentation;
 import com.marketplace.service.payment.PaymentRepresentation;
 import com.marketplace.service.product.ProductRepresentation;
 
 @XmlRootElement(name = "Order")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class OrderRepresentation {
+public class OrderRepresentation extends LinkRepresentation {
 	
 	private int orderID;
 	private CustomerRepresentation customer;

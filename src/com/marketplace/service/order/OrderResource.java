@@ -27,7 +27,7 @@ public class OrderResource {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/orders")
-	public List<OrderRepresentation> getAllOrders(@QueryParam("custID") int custID, @QueryParam("offset") int offset, @QueryParam("limit") int limit){
+	public List<OrderRepresentation> getAllOrders(@QueryParam("offset") int offset, @QueryParam("limit") int limit){
 		if (limit == 0) {
 			limit = 5;
 		}
@@ -65,5 +65,15 @@ public class OrderResource {
 		System.out.println("DELETE METHOD Request from Client for Delete Order");
 		OrderActivity addActivity = new OrderActivity();
 		return addActivity.deleteOrder(orderID);
+	}
+	
+	@POST
+	@Consumes({"application/xml" , "application/json"})
+	@Produces({"application/xml" , "application/json"})
+	@Path("/orders/status")
+	public OrderRepresentation updateOrderStatus(OrderRequest aReq) {
+		System.out.println("POST METHOD Request from Client for Update Order Status");
+		OrderActivity addActivity = new OrderActivity();
+		return addActivity.updateOrderStatus(aReq);
 	}
 }
