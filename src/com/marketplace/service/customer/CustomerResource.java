@@ -2,6 +2,7 @@ package com.marketplace.service.customer;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 
@@ -11,6 +12,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 import com.marketplace.service.customer.CustomerRepresentation;
 
@@ -41,10 +44,12 @@ public class CustomerResource {
 	}
 	
 	@POST
+	@Consumes({"application/json"})
 	@Produces({"application/xml" , "application/json"})
 	@Path("/customers")
 	public CustomerRepresentation addCustomer(CustomerRequest cReq) {
 		System.out.println("POST METHOD Request from Client for Add Customer");
+		System.out.println(cReq);
 		CustomerActivity cActivity = new CustomerActivity();
 		return cActivity.addCustomer(cReq);
 	}
