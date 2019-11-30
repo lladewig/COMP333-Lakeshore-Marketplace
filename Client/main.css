@@ -36,4 +36,13 @@ body {
     color: #000;
     font-size: 1.3rem;
     line-height: 1.5;
+  }
   
+  .customer_description form {
+    width: 50%;
+    text-align: left;
+  }
+  .customer_description {
+    width: 50%;
+    text-align: left;
+  }
