@@ -2,8 +2,6 @@ $(document).ready(function(){
     $('.header').height($(window).height());
 });
 
-
-
 function performCustomerPost() {
     const url = 'http://localhost:8081/customerservice/customers';
     const config = {
@@ -22,6 +20,9 @@ function performCustomerPost() {
         }))
         .then(response => {
             console.log('response status', response.status);
+            console.log(response);
+            document.cookie = "customerID=" + response.data.Customer.customerID;
+            console.log(document.cookie);
             window.location.href = "http://localhost:8082/customer_profile.html";
         })
         .catch(error => {
