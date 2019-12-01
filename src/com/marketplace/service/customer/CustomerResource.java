@@ -44,12 +44,11 @@ public class CustomerResource {
 	}
 	
 	@POST
-	@Consumes({"application/json"})
-	@Produces({"application/xml" , "application/json"})
+	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/xml", "application/json"})
 	@Path("/customers")
 	public CustomerRepresentation addCustomer(CustomerRequest cReq) {
 		System.out.println("POST METHOD Request from Client for Add Customer");
-		System.out.println(cReq);
 		CustomerActivity cActivity = new CustomerActivity();
 		return cActivity.addCustomer(cReq);
 	}

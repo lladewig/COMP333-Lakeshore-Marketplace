@@ -38,21 +38,31 @@ body {
     line-height: 1.5;
   }
 
-  .customer_description form {
-    width: 50%;
-    text-align: left;
-  }
   .customer_description {
-    width: 50%;
-    text-align: left;
+    width: 100%;
+    text-align: center;
     color: #000;
   }
   .customer_description h1{
-    width: 50%;
-    text-align: left;
+    text-align: center;
     color: #ae97c2;
+    font-size: 400%;
   }
   .customer_description h3{
-    text-align: left;
+    text-align: center;
     color: #ae97c2;
+  }
+
+  .new_customer {
+    text-align: center;
+  }
+
+  .customer_description #sign-up{
+    width: 50%;
+  }
+
+  .customer_register {
+    width: 50%;
+    text-align: center;
+    transform: translate(50%, 0%);
   }

@@ -5,34 +5,26 @@ $(document).ready(function(){
 
 
 function performCustomerPost() {
-    
-
-    let signupForm = document.getElementById('customer-register');
-        signupForm.addEventListener('submit', function(event) {
-        
-        
-        const url = 'http://localhost:8081/customerservice/customers';
-        const options = {
-        method: 'POST',
+    const url = 'http://localhost:8081/customerservice/customers';
+    const config = {
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=UTF-8'
-        },
-        body: JSON.stringify({
+            'Content-Type': 'application/json'
+        }
+    };
+    axios.post(url, (
+        {
             'CustomerRequest': {
-                'firstName': 'bob',
-                'lastName': 'johnson',
-                'phoneNumber': '12345678'
+                'firstName': document.getElementById("first-name").value,
+                'lastName': document.getElementById("last-name").value,
+                'phoneNumber': document.getElementById("phone-number").value
             }
-        })
-        };
-        console.log(options.body);
-        fetch(url, options)
+        }))
         .then(response => {
-            console.log(response.status);
+            console.log('response status', response.status);
+            window.location.href = "http://localhost:8082/customer_profile.html";
         })
         .catch(error => {
-            console.log(error);
-        });
-    });
+            console.log('error', error);
+        }); 
 }
