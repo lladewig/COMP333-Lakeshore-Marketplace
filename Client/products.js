@@ -9,16 +9,25 @@ $(document).ready(function(){
         pagination:"local",       //paginate the data
         paginationSize:7,         //allow column order to be changed
         resizableRows:true, 
+        placeholder:"No Products Available",
         ajaxURL:"http://localhost:8081/productservice/products?limit=100",
         ajaxConfig:"GET",
         ajaxResponse: function(url, params, response){
             return Object.values(response.Product);
         },
-        columns:[                 //define the table columns
+        columns:[       
             {title:"Product", field:"productName"},
-            {title:"Description", field:"productDescription"},
-            {title:"Cost", field:"productCost"},
-            {title:"Sold by", field:"partner.partnerName"}
+            {title:"Description", field:"productDescription", width:500},
+            {title:"Cost", field:"productCost", formatter:"money", formatterParams:{
+                symbol:"$",
+                precision:false,
+            }},
+            {title:"Sold by", field:"partner.partnerName"},
+            {title:"Buy", field:"productID", formatter:"link", formatterParams:{
+                label:"Buy Now",
+                urlPrefix:"http://localhost:8082/product.html?prodID=",
+                target:"_self",
+            }}
         ],
     });
 });
