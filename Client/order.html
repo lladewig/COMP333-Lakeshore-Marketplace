@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title id="title">Lakeshore Marketplace</title>
+<title>Lakeshore Marketplace | Customers</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="main.css">
-<link href="https://unpkg.com/tabulator-tables@4.5.1/dist/css/tabulator.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -27,20 +26,20 @@
                   </ul>
                 </div>   
                 </nav>
-                
-        <header class="page-header header container-fluid">
-                <div class="product-description">
-                <h1 id="product-name">Loading...</h1>
-                <p id="product-details"></p>  
-                <div id="reviews"></div>
-                <button class="btn btn-outline-secondary btn-lg" onclick="redirectBuy()">Buy</button>            
-          </div>  
+        <header class="page-header header container-fluid" id="new_customer">
+                <div class="order">
+                <h1>Thank you for your purchase!</h1>
+                <p id="thanks">We're submitting your order, just one moment...</p> 
+                <p id="productName"></p>
+                <p id="customerName"></p>
+                <p id="address"></p>
+                <p id="invoice"></p>
+                </div>
         </header>   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.5.1/dist/js/tabulator.min.js"></script>
-    <script src="product.js"></script>
+    <script src="order.js"></script>
   </body>
 
 </html>

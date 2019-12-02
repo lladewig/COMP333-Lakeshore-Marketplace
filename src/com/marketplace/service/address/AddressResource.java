@@ -11,6 +11,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
+
+@CrossOriginResourceSharing(
+		allowOrigins = {"http://localhost:8082"},
+		allowCredentials = true,
+		allowHeaders = {
+					"'Accept': 'application/json'",
+					"'Content-Type': 'application/json'"
+		}
+)	
 @Path("/addressservice/")
 public class AddressResource {
 	

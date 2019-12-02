@@ -17,7 +17,7 @@ $(document).ready(function(){
         },
         columns:[       
             {title:"Product", field:"productName"},
-            {title:"Description", field:"productDescription", width:500},
+            {title:"Description", field:"productDescription", width:450},
             {title:"Cost", field:"productCost", formatter:"money", formatterParams:{
                 symbol:"$",
                 precision:false,

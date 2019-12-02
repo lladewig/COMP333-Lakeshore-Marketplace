@@ -28,10 +28,12 @@ $(document).ready(function(){
                 {title:"Review", field:"reviewBody" },
                 {title:"Reviewed by", field:"customer.firstName"}
             ],
-         });
-        
+         });    
     });
-
-    
-    
 });
+
+function redirectBuy(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const prodID = urlParams.get('prodID');
+    window.location.href = "http://localhost:8082/buy.html?prodID=" + prodID;
+}

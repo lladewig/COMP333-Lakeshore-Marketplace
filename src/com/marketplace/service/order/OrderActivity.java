@@ -69,7 +69,7 @@ public class OrderActivity {
 	
 	public OrderRepresentation addOrder(OrderRequest aReq) {
 		OrderLogic oLogic = new OrderLogic();
-		Order order = oLogic.addOrder(aReq.getCustomerID(), aReq.getProductID(), aReq.getPaymentID(), aReq.getStatus(), aReq.getAddressID());
+		Order order = oLogic.addOrder(aReq.getCustomerID(), aReq.getPaymentID(), aReq.getProductID(), aReq.getStatus(), aReq.getAddressID());
 		
 		Link getOrderByID = new Link("getOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
 		Link deleteOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
@@ -132,6 +132,10 @@ public class OrderActivity {
 		payRes.setExpirationDate(order.getPayment().getexpirationDate());
 		payRes.setAddress(aRes);	
 		
+		cRes.setCustomerID(order.getcustomer().getcustomerID());
+		cRes.setFirstName(order.getcustomer().getfirstName());
+		cRes.setLastName(order.getcustomer().getlastName());
+		cRes.setPhoneNumber(order.getcustomer().getphoneNumber());
 		
 		oRes.setorderID(order.getorderID());
 		oRes.setcustomer(cRes);
