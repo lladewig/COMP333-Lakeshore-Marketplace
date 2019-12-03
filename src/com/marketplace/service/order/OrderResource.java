@@ -55,6 +55,7 @@ public class OrderResource {
 	public OrderRepresentation addOrder(OrderRequest aReq) {
 		System.out.println("POST METHOD Request from Client for Add Order");
 		OrderActivity addActivity = new OrderActivity();
+		System.out.println(aReq.getProductID());
 		return addActivity.addOrder(aReq);
 	}
 	

@@ -18,6 +18,9 @@
 			<ref bean="partnerServiceRest" />
 			<ref bean="addressServiceRest" />
 			<ref bean="paymentServiceRest" />
+			<ref bean="productServiceRest" />
+			<ref bean="orderServiceRest" />
+			<ref bean="reviewServiceRest" />
 		</jaxrs:serviceBeans>
 
 		<jaxrs:schemaLocations>
