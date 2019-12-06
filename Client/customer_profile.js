@@ -24,6 +24,7 @@ $(document).ready(function(){
 
 function performCustomerFirstNameUpdate(){
     const firstNameURL = initialResponse.data.Customer.link[1].url;
+    console.log(firstNameURL);
     axios.put(firstNameURL, {
         'CustomerRequest': {
             'customerID': customerID,
@@ -33,6 +34,7 @@ function performCustomerFirstNameUpdate(){
     .then(response =>{
         console.log(response.status);
         document.getElementById("firstName").innerHTML = "First name: " + response.data.Customer.firstName;
+        $('#first-name').val('')
     })
 }
 
@@ -48,6 +50,7 @@ function performCustomerLastNameUpdate(){
     .then(response =>{
         console.log(response.status);
         document.getElementById("lastName").innerHTML = "Last name: " + response.data.Customer.lastName;
+        $('#last-name').val('')
     })
 }
 
@@ -63,6 +66,7 @@ function performCustomerPhoneNumberUpdate(){
     .then(response =>{
         console.log(response.status);
         document.getElementById("phoneNumber").innerHTML = "Phone number: " + response.data.Customer.phoneNumber;
+        $('#phone-number').val('')
     })
 }
 

@@ -21,7 +21,8 @@ public class OrderActivity {
 		
 		Link delOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + orderID, "application/xml");
 		Link updateOrder = new Link("updateOrderStatus", "http://localhost:8081/orderservice/orders/update", "application/xml");
-		OrderRepresentation oRes = buildResponse(order, delOrder, updateOrder);
+		Link addReview = new Link("addReview", "http://localhost:8081/reviewservice/reviews", "application/xml");
+		OrderRepresentation oRes = buildResponse(order, delOrder, updateOrder, addReview);
 		return oRes;
 	}
 	
@@ -74,7 +75,7 @@ public class OrderActivity {
 		Link getOrderByID = new Link("getOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
 		Link deleteOrder = new Link("deleteOrder", "http://localhost:8081/orderservice/orders/" + order.getorderID(), "null");
 		Link getAllOrders = new Link("getAllOrdersForCustomer", "http://localhost:8081/orderservice/orders?custID="+order.getcustomer().getcustomerID()+"&offset=0&limit=20", "null");
-		Link addReview = new Link("addReview", "http://localhost:8081/reviewservice/reviews" + order.getProduct().getproductID(), "application/xml");
+		Link addReview = new Link("addReview", "http://localhost:8081/reviewservice/reviews/" + order.getProduct().getproductID(), "application/xml");
 		
 		OrderRepresentation oRes = buildResponse(order, getOrderByID, deleteOrder, getAllOrders, addReview);
 		return oRes;

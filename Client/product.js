@@ -8,7 +8,6 @@ $(document).ready(function(){
         console.log(getPartnerURL);
         axios.get(getPartnerURL)
         .then(response =>{
-            console.log("going to set partner now")
             document.getElementById("partner").innerHTML = "Sold by: " + response.data.Partner.partnerName + ", " + response.data.Partner.partnerType;
         });
 
