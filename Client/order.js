@@ -36,6 +36,7 @@ function performReview(){
             console.log(response.status);
             $('#score').val('')
             $('#body').val('')
+             window.location.href = "http://localhost:8082/product.html?prodID=" + initialResponse.data.Order.product.productID;
         })
         .catch(error =>{
             console.log(error);
