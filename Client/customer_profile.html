@@ -28,12 +28,40 @@
                 </nav>
         <header class="page-header header container-fluid" id="new_customer">
                 <div class="customer_profile">
+                <br>
                 <h1>Welcome!</h1>
                 <p id="thanks">We're creating your profile, just one moment...</p> 
                 <p id="firstName"></p>
                 <p id="lastName"></p>
                 <p id="phoneNumber"></p>
                 <a class="btn btn-outline-secondary btn-lg" href="products.html">See what's for sale</a> 
+                <br><br>
+                <h1>Profile Settings</h1>
+                <h4>Update First Name</h4>
+                <form id="first-name-update">
+                    <div>
+                        <input type="text" class="form-control" placeholder="First name" id="first-name">
+                    </div>
+                        <input id="sign-up" placeholder="Update First Name" class="btn btn-primary" onclick="performCustomerFirstNameUpdate()">    
+                </form> <br> <br>
+                <h4>Update Last Name</h4>
+                <form id="last-name-update">
+                    <div>
+                        <input type="text" class="form-control" placeholder="Last name" id="last-name">
+                    </div>
+                        <input id="sign-up" placeholder="Update Last Name" class="btn btn-primary" onclick="performCustomerLastNameUpdate()">    
+                </form> <br> <br>
+                <h4>Update Phone Number</h4>
+                <form id="phone-number-update">
+                    <div>
+                        <input type="text" class="form-control" placeholder="Phone Number" id="phone-number">
+                    </div>
+                        <input id="sign-up" placeholder="Update Phone Number" class="btn btn-primary" onclick="performCustomerPhoneNumberUpdate()">    
+                </form>
+                <br><br>
+                <h4>Delete your account</h4>
+                <a class="btn btn-outline-secondary btn-lg" onclick="performCustomerDelete()">Delete</a> 
+                <p>THIS IS A PERMANENT OPERATION - USE WITH CAUTION</p>
                 </div>
         </header>   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
