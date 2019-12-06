@@ -15,8 +15,9 @@ public class ProductActivity {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.getProductByID(productID);
 		Link delProd = new Link("deleteOrder", "http:/localhost:8081/productservice/products/" + productID, "null");
-		Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + product.getproductID(), "null");
-		ProductRepresentation aRes = buildResponse(product, delProd, getProdReviews);
+		Link getProdReviews = new Link("getReview", "http://localhost:8081/reviewservice/reviews?prodID=" + product.getproductID(), "null");
+		Link getPartner = new Link("getPartner", "http://localhost:8081/partnerservice/partners/" + product.getpartner().getpartnerID(), "null");
+		ProductRepresentation aRes = buildResponse(product, delProd, getProdReviews, getPartner);
 		return aRes;
 	}
 	
@@ -31,8 +32,8 @@ public class ProductActivity {
           Product product = (Product)it.next();
           
 				
-				Link getProd = new Link("getProduct", "http://localhost:8080/productservice/products/" + product.getproductID(), "null");
-				Link getProdReviews = new Link("getReview", "http://localhost:8080/reviewservice/reviews?prodID=" + product.getproductID() + "&offset=0&limit=10", "null");
+				Link getProd = new Link("getProduct", "http://localhost:8081/productservice/products/" + product.getproductID(), "null");
+				Link getProdReviews = new Link("getReview", "http://localhost:8081/reviewservice/reviews?prodID=" + product.getproductID() + "&offset=0&limit=10", "null");
 				Link getAllProd = new Link("getAllProducts", "http://localhost:8081/productservice/products?offset=0&limit=10", "null");
 				Link order = new Link("orderProduct", "http://localhost:8081/orderservice/orders", "application/xml");
 				ProductRepresentation aRes = buildResponse(product,getProd,getProdReviews,getAllProd,order);
