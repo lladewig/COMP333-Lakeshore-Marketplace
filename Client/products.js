@@ -23,8 +23,8 @@ $(document).ready(function(){
                 precision:false,
             }},
             {title:"Sold by", field:"partner.partnerName"},
-            {title:"Buy", field:"productID", formatter:"link", formatterParams:{
-                label:"Buy Now",
+            {title:"Details", field:"productID", formatter:"link", formatterParams:{
+                label:"More Details",
                 urlPrefix:"http://localhost:8082/product.html?prodID=",
                 target:"_self",
             }}
