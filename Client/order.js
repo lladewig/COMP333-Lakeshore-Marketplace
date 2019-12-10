@@ -14,6 +14,7 @@ $(document).ready(function(){
             document.getElementById("productName").innerHTML = "Product: " + response.data.Order.product.productName;
             document.getElementById("address").innerHTML = "Shipment address: " + response.data.Order.shipmentAddress.streetAddress + " " + response.data.Order.shipmentAddress.unitNumber + ", " + response.data.Order.shipmentAddress.city + " " + response.data.Order.shipmentAddress.state + " " + response.data.Order.shipmentAddress.zipCode;
             document.getElementById("invoice").innerHTML = "Order invoice: " + response.data.Order.product.productCost + " was charged to " + response.data.Order.payment.cardNumber;
+            document.getElementById("status").innerHTML = "Order status: " + response.data.Order.status;
         })
         .catch(error =>{
             console.log(error);
