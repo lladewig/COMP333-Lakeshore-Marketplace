@@ -17,9 +17,9 @@ public class ProductLogic {
 		return pd.getAllProducts(offset, limit);
 	}
 	
-	public List<Product> getAllProductsByPartner(int partnerID){
+	public List<Product> getAllProductsByPartner(int partnerID, int offset, int limit){
 		ProductDAL pd = new ProductDAL();
-		return pd.getAllProductsByPartner(partnerID);
+		return pd.getAllProductsByPartner(partnerID, offset, limit);
 	}
 	
 	public Product addProduct(int partnerID, String productName, String productDescription, double cost) {

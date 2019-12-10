@@ -13,7 +13,7 @@ public class PartnerActivity {
 	public PartnerRepresentation getPartnerByID(int partnerID) {
 		PartnerLogic pLogic = new PartnerLogic();
 		Partner partner = pLogic.getPartnerByID(partnerID);
-		Link updateName = new Link("updatePartnerName", "http:/localhost:8081/partnerservice/partners/name", "application/xml");
+		Link updateName = new Link("updatePartnerName", "http://localhost:8081/partnerservice/partners/name", "application/xml");
 		Link updateDetails = new Link("updatePartnerDetails", "http://localhost:8081/partnerservice/partners/details", "application/xml");
 		Link delPartner = new Link("deletePartner", "http://localhost:8081/partnerservice/partners/" + partnerID, "null");
 		PartnerRepresentation pRes = buildResponse(partner, updateName, updateDetails, delPartner);
@@ -87,6 +87,7 @@ public class PartnerActivity {
 		pRes.setPartnerName(partner.getpartnerName());
 		pRes.setPartnerType(partner.getpartnerType());
 		pRes.setPartnerDetails(partner.getpartnerDetails());
+		pRes.setLinks(links);
 		return pRes;
 	}
 	

@@ -31,7 +31,7 @@ function performCustomerPost() {
 }
 
 function performPartnerPost() {
-    const url = 'http://localhost:8081/customerservice/partners';
+    const url = 'http://localhost:8081/partnerservice/partners';
     const config = {
         headers: {
             'Accept': 'application/json',
@@ -43,7 +43,7 @@ function performPartnerPost() {
             'PartnerRequest': {
                 'partnerName': document.getElementById("partner-name").value,
                 'partnerType': document.getElementById("partner-type").value,
-                'details': document.getElementById("details").value
+                'partnerDetails': document.getElementById("details").value
             }
         }))
         .then(response => {

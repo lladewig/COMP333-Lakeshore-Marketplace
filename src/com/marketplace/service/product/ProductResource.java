@@ -36,6 +36,18 @@ public class ProductResource {
 		return addActivity.getAllProducts(offset, limit);
 	}
 	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/products/partner/{partnerID}")
+	public List<ProductRepresentation> getAllProductsForPartner(@PathParam("partnerID") int partnerID, @QueryParam("offset") int offset, @QueryParam("limit") int limit){
+		if (limit == 0) {
+			limit = 5;
+		}
+		System.out.println("GET METHOD Request from Client for Get All Products For Partner with offset " + offset + " and limit " + limit);
+		ProductActivity addActivity = new ProductActivity();
+		return addActivity.getAllProductsForPartner(partnerID, offset, limit);
+	}
+	
 	@POST
 	@Consumes({"application/xml" , "application/json"})
 	@Produces({"application/xml" , "application/json"})
