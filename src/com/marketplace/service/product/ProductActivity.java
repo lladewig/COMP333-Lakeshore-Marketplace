@@ -44,6 +44,29 @@ public class ProductActivity {
 		return aResponses;
 	}
 	
+	public List<ProductRepresentation> getAllProductsForPartner(int partnerID, int offset, int limit){
+		ProductLogic aLogic = new ProductLogic();	
+		List<Product> products = new ArrayList<Product>();
+		List<ProductRepresentation> aResponses = new ArrayList<ProductRepresentation>();
+		products = aLogic.getAllProductsByPartner(partnerID, offset, limit);
+		
+		Iterator<Product> it = products.iterator();
+		while(it.hasNext()) {
+          Product product = (Product)it.next();
+          
+				
+				Link getProd = new Link("getProduct", "http://localhost:8081/productservice/products/" + product.getproductID(), "null");
+				Link getProdReviews = new Link("getReview", "http://localhost:8081/reviewservice/reviews?prodID=" + product.getproductID() + "&offset=0&limit=10", "null");
+				Link getAllProd = new Link("getAllProducts", "http://localhost:8081/productservice/products?offset=0&limit=10", "null");
+				Link order = new Link("orderProduct", "http://localhost:8081/orderservice/orders", "application/xml");
+				ProductRepresentation aRes = buildResponse(product,getProd,getProdReviews,getAllProd,order);
+				
+				aResponses.add(aRes);
+        }
+		
+		return aResponses;
+	}
+	
 	public ProductRepresentation addProduct(ProductRequest aReq) {
 		ProductLogic aLogic = new ProductLogic();
 		Product product = aLogic.addProduct(aReq.getPartnerID(), aReq.getProductName(), aReq.getproductDescription(), aReq.getproductCost());

@@ -1,5 +1,10 @@
 $(document).ready(function(){
     $('.header').height($(window).height());
+
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookie = decodedCookie.split(';');
+    var partnerIDString = cookie[0].split("=");
+    partnerID = partnerIDString[1];
     var table = new Tabulator("#product-display", {        //load row data from array
         layout:"fitColumns",      //fit columns to width of table
         responsiveLayout:"hide",  //hide columns that dont fit on the table
@@ -10,7 +15,7 @@ $(document).ready(function(){
         paginationSize:7,         //allow column order to be changed
         resizableRows:true, 
         placeholder:"No Products Available",
-        ajaxURL:"http://localhost:8081/productservice/products?limit=100",
+        ajaxURL:"http://localhost:8081/productservice/products/partner/" + partnerID,
         ajaxConfig:"GET",
         ajaxResponse: function(url, params, response){
             return Object.values(response.Product);

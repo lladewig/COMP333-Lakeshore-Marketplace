@@ -22,6 +22,7 @@ public class OrderLogic {
 		OrderDAL od = new OrderDAL();
 		return od.getAllOrdersForCustomer(custID, offset, limit);
 	}
+
 	
 	public Order updateOrderStatus(String newStatus, int id) {
 		OrderDAL od = new OrderDAL();

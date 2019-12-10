@@ -38,12 +38,12 @@ public class ProductDAL {
 		return products;
 	}
 	
-	public List<Product> getAllProductsByPartner(int partnerID){
+	public List<Product> getAllProductsByPartner(int partnerID, int offset, int limit){
 		SessionFactory sf = (SessionFactory) new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 	    Session session = sf.openSession();
 	    
 
-	    Query query = session.createQuery("from Product where partner_id=:partnerID").setParameter("partnerID", partnerID);
+	    Query query = session.createQuery("from Product where partner_id=:partnerID").setParameter("partnerID", partnerID).setFirstResult(offset).setMaxResults(limit);
 	    List<Product> products = query.list();
 	    
 		session.close();
