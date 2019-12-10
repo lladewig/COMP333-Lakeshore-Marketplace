@@ -28,6 +28,10 @@ psql --host=webservices-lakeshore-mp.clvkxzutxsxi.us-east-2.rds.amazonaws.com --
 This is the model of our database used in this project.
 ![LMP Lakeshore Marketplace DB](https://github.com/lladewig/COMP333-Project-2/blob/master/LMP%20Database%20Model.png)
 
+## State Diagram
+This is our state diagram.
+![LMP Lakeshore Marketplace State Diagram](https://github.com/lladewig/COMP333-Lakeshore-Marketplace/blob/state/state%20diagram.png)
+
 # API
 Featured here are some sample responses and requests from the various service endpoints. Currently, each endpoint accepts `JSON` and `XML`, but all sample responses and requests are shown in `XML`. Additionally, each endpoint and its respective HTTP verb are shown.
 
