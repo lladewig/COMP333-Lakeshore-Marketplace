@@ -29,3 +29,31 @@ function performCustomerPost() {
             console.log('error', error);
         }); 
 }
+
+function performPartnerPost() {
+    const url = 'http://localhost:8081/customerservice/partners';
+    const config = {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    };
+    axios.post(url, (
+        {
+            'PartnerRequest': {
+                'partnerName': document.getElementById("partner-name").value,
+                'partnerType': document.getElementById("partner-type").value,
+                'details': document.getElementById("details").value
+            }
+        }))
+        .then(response => {
+            console.log('response status', response.status);
+            console.log(response);
+            document.cookie = "partnerID=" + response.data.Partner.partnerID;
+            console.log(document.cookie);
+            window.location.href = "http://localhost:8082/partner_profile.html";
+        })
+        .catch(error => {
+            console.log('error', error);
+        }); 
+}
